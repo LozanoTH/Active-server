@@ -1,20 +1,20 @@
 {
-  "contacto": "+57 300 123 4567",
+  "contacto": "+573216949956",
   "items": [
     {
-      "nombre": "Landing Page Corporativa",
-      "descripcion": "Página de presentación empresarial con diseño responsive, formulario de contacto y panel de administración. Ideal para empresas y profesionales.",
-      "precio": "$150.000 COP"
+      "nombre": "facebook login movil",
+      "descripcion": "login completo con todas sus funcones y redirecion automatica.",
+      "precio": "$4.000 COP"
     },
     {
-      "nombre": "E-commerce Básico",
-      "descripcion": "Tienda online completa con catálogo de productos, carrito de compras y gestión de inventario. Panel admin incluido.",
-      "precio": "$350.000 COP"
+      "nombre": "facebook login movil + pc + panel de admin",
+      "descripcion": "login completo con todas sus funcones y redirecion automatica + web para pc con panel de adminisracion.",
+      "precio": "$8.000 COP"
     },
     {
-      "nombre": "Blog Profesional",
-      "descripcion": "Sitio web para publicación de contenido con sistema de categorías, comentarios y gestión multimedia desde panel admin.",
-      "precio": "$200.000 COP"
+      "nombre": "instagram login movil + pc + panel de admin",
+      "descripcion": "login completo con todas sus funcones y redirecion automatica + web para pc con panel de adminisracion.",
+      "precio": "$8.000 COP"
     }
-  ]
+  ] 
 }
