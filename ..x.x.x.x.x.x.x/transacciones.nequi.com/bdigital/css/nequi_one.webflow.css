@@ -1,0 +1,2935 @@
+body {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  color: #333;
+  font-size: 14px;
+  line-height: 20px;
+}
+h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 38px;
+  line-height: 44px;
+  font-weight: 700;
+}
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700;
+}
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+}
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+}
+p {
+  margin-bottom: 5px;
+}
+a {
+  color: #00e;
+}
+.button {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 30px;
+  background-color: #fa2f73;
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+.button.top-boton {
+  width: 120px;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 40px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  text-transform: uppercase;
+}
+.button.top-boton.blue {
+  background-color: #210049;
+}
+.button.top-boton.red {
+  background-color: #ff2f73;
+}
+.button.top-intro-boton {
+  padding: 15px 90px;
+  border-radius: 30px;
+  background-color: #ff2f73;
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #FFF;
+  line-height: 17px;
+}
+.button.boton-bloquear {
+  display: inline-block;
+  font-family:'Avenirnextltpro cn', sans-serif;
+  color: white;
+  font-size: 14px;
+  line-height: 17px;
+}
+.button.boton-cancelarbloqueo {
+  padding-bottom: 8px;
+  background-color: #717171;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: white;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+}
+.button.boton-aceptar {
+  padding: 8px 60px 6px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: white;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.wrapper-general {
+  display: block;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url('../images/rombo-grey.png'), url('../images/rombo-green.jpg');
+  background-position: 0px 315px, 100% 0px;
+  background-size: 125px, 856px;
+  background-repeat: no-repeat, no-repeat;
+}
+.top {
+  padding-top: 50px;
+}
+.top-left {
+  display: inline-block;
+  width: 50%;
+  padding-left: 50px;
+}
+.top-logo {
+  width: 76px;
+  height: 22px;
+  margin-right: 35px;
+  float: left;
+  background-image: url('../images/logoblue-lukka.png');
+  background-position: 50% 50%;
+  background-size: 73px;
+  background-repeat: no-repeat;
+}
+.top-menu {
+  display: inline-block;
+}
+.top-menu-item {
+  padding-right: 35px;
+  padding-left: 35px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #210049;
+  line-height: 0px;
+  text-decoration: none;
+}
+.top-menu-item.border {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-right: 1px solid #b9b9b9;
+}
+.top-menu-divisor {
+  display: inline-block;
+  width: 42px;
+  height: 17px;
+  background-image: url('../images/top-divisor.png');
+  background-position: 50% 50%;
+  background-size: 1px;
+  background-repeat: no-repeat;
+}
+.top-right {
+  display: inline-block;
+  width: 45%;
+  text-align: right;
+}
+.top-intro {
+  padding-top: 150px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.top-intro-fraseuno {
+  display: inline-block;
+  padding-bottom: 35px;
+  font-family:'Avenirnextltpro cn', sans-serif;
+  color: #9b9b9b;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.top-intro-frasedos {
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #210049;
+  font-size: 72px;
+  line-height: 80px;
+}
+.top-intro-divisor {
+  width: 220px;
+  height: 70px;
+  background-image: url('../images/ondas-green.png');
+  background-position: 50% 50%;
+  background-size: 219px;
+  background-repeat: no-repeat;
+}
+.top-intro-frasetres {
+  display: block;
+  width: 50%;
+  padding-bottom: 50px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 26px;
+  line-height: 32px;
+}
+.top-intro-frasecuatro {
+  display: block;
+  padding-bottom: 12px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 12px;
+  line-height: 14px;
+}
+.features {
+  height: 800px;
+  padding-right: 50px;
+  padding-left: 50px;
+  background-image: url('../images/iphone.jpg');
+  background-position: 0px 0px;
+  background-size: 672px;
+  background-repeat: no-repeat;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+.feature-frase {
+  display: inline-block;
+  padding-top: 20px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 36px;
+  line-height: 40px;
+}
+.features-box {
+  position: relative;
+  top: -100px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  float: right;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.29) 0px 9px 24px 0px;
+}
+.features-box-left {
+  width: 50%;
+  float: left;
+}
+.features-box-right {
+  width: 50%;
+  float: right;
+}
+.features-pagar {
+  width: 420px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-top-left-radius: 10px;
+  background-color: #74e6f0;
+}
+.features-pagar-icon {
+  height: 60px;
+  background-image: url('../images/icon-pagar.png');
+  background-position: 50% 50%;
+  background-size: 45px;
+  background-repeat: no-repeat;
+}
+.features-titulo {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #210049;
+  font-size: 18px;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.features-sep-white {
+  height: 40px;
+  background-image: url('../images/separador-white.png');
+  background-position: 50% 50%;
+  background-size: 40px;
+  background-repeat: no-repeat;
+}
+.features-texto {
+  font-family: Avenirnextltpro, sans-serif;
+  color: #210049;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+.features-pedir {
+  width: 420px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom-left-radius: 10px;
+  background-color: #ffd160;
+}
+.features-pedir-icon {
+  height: 60px;
+  background-image: url('../images/icon-pedirplata.png');
+  background-position: 50% 50%;
+  background-size: 45px;
+  background-repeat: no-repeat;
+}
+.features-enviarplata {
+  width: 420px;
+  padding-top: 80px;
+  padding-bottom: 25px;
+  border-top-right-radius: 10px;
+  background-color: #f4f4f4;
+}
+.features-enviarplata-icon {
+  height: 60px;
+  background-image: url('../images/icon-enviarplata.png');
+  background-position: 50% 50%;
+  background-size: 50px;
+  background-repeat: no-repeat;
+}
+.features-sep-blue {
+  height: 40px;
+  background-image: url('../images/separador-green.png');
+  background-position: 50% 50%;
+  background-size: 40px;
+  background-repeat: no-repeat;
+}
+.features-picture {
+  height: 413px;
+  border-bottom-right-radius: 10px;
+  background-image: url('../images/granma.jpg');
+  background-position: 50% 0px;
+  background-size: 483px;
+  background-repeat: no-repeat;
+}
+.features-right {
+  display: inline-block;
+  width: 840px;
+  float: right;
+}
+.features-ondas {
+  position: absolute;
+  z-index: 100;
+  width: 53%;
+  height: 66px;
+  background-image: url('../images/ondas-red.png');
+  background-position: 50% 50%;
+  background-size: 165px;
+  background-repeat: no-repeat;
+}
+.features-destacado {
+  position: relative;
+  left: 60px;
+  top: 670px;
+  z-index: 1;
+  display: inline-block;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 25px 60px 25px 80px;
+  border-radius: 6px;
+  background-color: #d8d8d8;
+}
+.features-destacado-frase {
+  display: inline-block;
+  font-family:'Avenirltstd medium', sans-serif;
+  color: #210049;
+}
+.features-destacado-smile {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-left: 15px;
+  background-image: url('../images/icon-smile.png');
+  background-position: 50% 50%;
+  background-size: 22px;
+  background-repeat: no-repeat;
+}
+.features-destacado-img {
+  position: relative;
+  left: 640px;
+  top: 710px;
+  z-index: 2;
+  display: inline-block;
+  width: 99px;
+  height: 100px;
+  background-image: url('../images/rombito-red.png');
+  background-position: 50% 50%;
+  background-size: 99px;
+  background-repeat: no-repeat;
+}
+.benefits {
+  display: block;
+  padding-top: 100px;
+  padding-right: 15px;
+  padding-left: 15px;
+  clear: both;
+}
+.benefits-icono {
+  height: 49px;
+  background-image: url('../images/rombito-green.png');
+  background-position: 50% 50%;
+  background-size: 49px;
+  background-repeat: no-repeat;
+}
+.benefits-frase {
+  padding-top: 25px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+}
+.benefits-separador {
+  height: 80px;
+  background-image: url('../images/onda-singlegray.png');
+  background-position: 50% 50%;
+  background-size: 103px;
+  background-repeat: no-repeat;
+}
+.benefits-box {
+  padding: 25px 15px;
+  border: 1px solid #80ebe3;
+  background-image: url('../images/diagonal.png');
+  background-position: 30% 50%;
+  background-size: 28px;
+  background-repeat: no-repeat;
+}
+.benefits-titulo {
+  display: inline-block;
+  width: 39%;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #210049;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+.benefits-texto {
+  display: inline-block;
+  width: 59%;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 16px;
+}
+.timeline {
+  padding-top: 130px;
+  padding-right: 25px;
+  padding-left: 25px;
+  background-image: url('../images/rombo-biggrey.png');
+  background-position: 0px 79px;
+  background-size: 666px;
+  background-repeat: no-repeat;
+}
+.timeline-review {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 425px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 15px;
+  clear: both;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 29px 0px;
+}
+.timeline-review-pic {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-image: url('../images/perfil-pic.jpg');
+  background-position: 50% 50%;
+  background-size: 60px;
+  background-repeat: no-repeat;
+}
+.timeline-review-textos {
+  display: inline-block;
+  width: 80%;
+  padding-left: 20px;
+  clear: none;
+}
+.timeline-review-titulo {
+  font-family:'Avenirltstd medium', sans-serif;
+  color: #210049;
+  font-size: 16px;
+}
+.timeline-review-txt {
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 16px;
+  line-height: 21px;
+}
+.timeline-box {
+  position: relative;
+  top: -50px;
+  z-index: 1;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+}
+.timeline-box-top {
+  padding-left: 170px;
+}
+.timeline-date-icon.icon-one {
+  height: 24px;
+  background-image: url('../images/icon-smile2.png');
+  background-position: 0px 0px;
+  background-size: 24px;
+  background-repeat: no-repeat;
+}
+.timeline-date-icon.icon-two {
+  height: 22px;
+  background-image: url('../images/icon-smile3.png');
+  background-position: 0px 0px;
+  background-size: 22px;
+  background-repeat: no-repeat;
+}
+.timeline-date-icon.icon-three {
+  height: 28px;
+  background-image: url('../images/icon-smile4.png');
+  background-position: 0px 0px;
+  background-size: 28px;
+  background-repeat: no-repeat;
+}
+.timeline-date-icon.icon-four {
+  height: 28px;
+  background-image: url('../images/icon-smile5.png');
+  background-position: 0px 0px;
+  background-size: 23px;
+  background-repeat: no-repeat;
+}
+.timeline-date-texto {
+  padding-top: 8px;
+  font-family:'Avenirnextltpro cn', sans-serif;
+  color: #210049;
+  font-size: 14px;
+  line-height: 17px;
+}
+.timeline-box-centerleft {
+  display: inline-block;
+  width: 100px;
+  height: 120px;
+  float: left;
+  background-image: url('../images/logoblue-lukka.png');
+  background-position: 50% 50%;
+  background-size: 73px;
+  background-repeat: no-repeat;
+}
+.timeline-box-centerright {
+  display: inline-block;
+  width: 1250px;
+}
+.timeline-box-diagonal-up {
+  height: 60px;
+  background-image: url('../images/diagonal-upline.png'), url('../images/diagonal-upline.png'), url('../images/diagonal-upline.png');
+  background-position: 74% 0px, 40% 0px, 83px 0px;
+  background-size: 32px, 32px, 32px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.timeline-box-lineppal {
+  height: 5px;
+  margin-top: -3px;
+  background-image: url('../images/line-straigh.png');
+  background-position: 50% 50%;
+  background-size: 1135px;
+  background-repeat: no-repeat;
+}
+.timeline-box-diagonal-down {
+  height: 65px;
+  margin-top: -3px;
+  background-image: url('../images/diagonal-downline.png'), url('../images/diagonal-downline.png'), url('../images/diagonal-downline.png'), url('../images/diagonal-downline.png');
+  background-position: 82% 0px, 60% 0px, 37% 0px, 189px 0px;
+  background-size: 32px, 32px, 32px, 32px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+}
+.timeline-box-bottom {
+  padding-left: 300px;
+}
+.tools {
+  padding-top: 100px;
+  background-color: #210249;
+}
+.tools-frase {
+  background-image: url('../images/ondas-singlefucsia.png'), url('../images/ondas-singlefucsia.png');
+  background-position: 70% 50%, 30% 50%;
+  background-size: 103px, 103px;
+  background-repeat: no-repeat, no-repeat;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #f4f4f4;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+}
+.tools-box {
+  padding-top: 125px;
+  padding-bottom: 125px;
+}
+.tools-column {
+  text-align: center;
+}
+.tools-icon {
+  display: block;
+  width: 174px;
+  height: 174px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.tools-icon.icon-metas {
+  background-image: url('../images/icon-metas.png');
+  background-position: 50% 50%;
+  background-size: 171px;
+  background-repeat: no-repeat;
+}
+.tools-icon.icon-bolsillos {
+  background-image: url('../images/icon-bolsillos.png');
+  background-position: 50% 50%;
+  background-size: 171px;
+  background-repeat: no-repeat;
+}
+.tools-icon.icon-guardadito {
+  background-image: url('../images/icon-guardadito.png');
+  background-position: 50% 50%;
+  background-size: 171px;
+  background-repeat: no-repeat;
+}
+.tools-texto {
+  font-family: Avenirnextltpro, sans-serif;
+  color: white;
+  font-size: 16px;
+}
+.tools-titulo {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #00c5d6;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+.mapa {
+  padding: 100px 23px;
+  background-image: url('../images/rombo-grey.png');
+  background-position: 0px 0px;
+  background-size: 300px;
+  background-repeat: no-repeat;
+}
+.mapa-left {
+  display: inline-block;
+  width: 30%;
+  padding-top: 150px;
+  float: left;
+}
+.mapa-right {
+  display: inline-block;
+  width: 65%;
+  float: right;
+}
+.mapa-titulo {
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #210249;
+  font-size: 16px;
+  line-height: 14px;
+}
+.mapa-texto {
+  padding-bottom: 45px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 16px;
+}
+.mapa-box {
+  margin-bottom: 20px;
+}
+.mapa-box-left {
+  display: inline-block;
+}
+.mapa-box-left.icon-blue {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  background-image: url('../images/icon-lukkablue.png');
+  background-size: 46px;
+  background-repeat: no-repeat;
+}
+.mapa-box-left.icon-red {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  background-image: url('../images/icon-lukkared.png');
+  background-size: 46px;
+  background-repeat: no-repeat;
+}
+.mapa-box-right {
+  display: inline-block;
+  float: none;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 16px;
+}
+.mapa-right-box {
+  height: 693px;
+  background-image: url('../images/mapa-udem.jpg');
+  background-position: 50% 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.mapa-right-titulo {
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #210049;
+  font-size: 16px;
+}
+.mapa-right-boton {
+  text-align: right;
+}
+.footer {
+  padding: 50px 25px 80px 25px;
+  clear: both;
+  background-color: #fa2f73;
+  background-image: url('../images/logo-vigilado.png'), url('../images/footer-cyan.png');;
+  background-position: 20px 31px, 0px bottom;
+  background-size: 11px, 1440px;
+  background-repeat: no-repeat, no-repeat;
+}
+.footer-left {
+  display: inline-block;
+  width: 49%;
+  padding-bottom: 65px;
+  float: left;
+}
+.footer-right {
+  display: inline-block;
+  width: 49%;
+  padding-bottom: 65px;
+  float: right;
+  clear: none;
+}
+.footer-buttons {
+  padding-top: 35px;
+}
+.footer-buttons-titulo {
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+.apple-store {
+  width: 49%;
+  height: 60px;
+  background-image: url('../images/btn-appstore.png');
+  background-position: 90% 50%;
+  background-size: 177px;
+  background-repeat: no-repeat;
+}
+.googleplay {
+  width: 49%;
+  height: 60px;
+  background-image: url('../images/btn-googleplay.png');
+  background-position: 10px 50%;
+  background-size: 179px;
+  background-repeat: no-repeat;
+}
+.footer-contactanos-titulo {
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: white;
+  line-height: 16px;
+  text-align: center;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+.footer-contactos {
+  padding-top: 35px;
+}
+.footer-contactos-box {
+  display: inline-block;
+  width: 32%;
+}
+.footer-contacto-icono {
+  display:block;
+  width: 100%;
+  height: 75px;
+  float: left;
+}
+.footer-contacto-icono.icon-chat {
+  background-image: url('../images/icon-chat.png');
+  background-position: 50% 0%;
+  background-size: 70px;
+  background-repeat: no-repeat;
+}
+.footer-contacto-icono.icon-phone {
+  background-image: url('../images/icon-phone.png');
+  background-position: 50% 0%;
+  background-size: 70px;
+  background-repeat: no-repeat;
+}
+.footer-contacto-icono.icon-mail {
+  background-image: url('../images/icon-mail.png');
+  background-position: 50% 0%;
+  background-size: 70px;
+  background-repeat: no-repeat;
+}
+.footer-contacto-textos {
+  display: block;
+  padding-top: 15px;
+  text-align:center;
+}
+.footer-contacto-textos-titulo {
+  font-family:'Avenirltstd medium', sans-serif;
+  color: white;
+  font-size: 14px;
+  line-height: 22px;
+  text-align:center;
+}
+.footer-contacto-textos-txt {
+  font-family: Avenirnextltpro, sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  letter-spacing:2px;
+}
+.footer-menu {
+  padding-top: 12px;
+  clear: both;
+  border-top: 1px solid #dc1054;
+}
+.footer-menu-logo {
+  width: 20%;
+  height: 37px;
+  float: left;
+  background-image: url('../images/logowhite-lukka.png');
+  background-position: 0px 50%;
+  background-size: 73px;
+  background-repeat: no-repeat;
+}
+.footer-menu-listabox {
+  width: 75%;
+  float: right;
+}
+.footer-menu-lista-item {
+  padding-right: 20px;
+  padding-left: 20px;
+  float: left;
+  font-family: Avenirnextltpro, sans-serif;
+  color: white;
+  font-size: 14px;
+}
+.login-top {
+  padding-left: 50px;
+}
+.login-intro {
+  padding-top: 130px;
+  padding-bottom: 475px;
+  padding-left: 50px;
+}
+.wrapper-login {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  background-position: 0px 100%, 100% 0px;
+  background-size: 672px, 856px;
+  background-repeat: no-repeat, no-repeat;
+}
+.login-top-frase {
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #210049;
+  font-size: 72px;
+  line-height: 80px;
+}
+.login-top-frasedos {
+  padding-bottom: 20px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #ff2f73;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.login-top-frasetres {
+  padding-bottom: 50px;
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #210049;
+  font-size: 16px;
+}
+.login-form {
+  width: 30%;
+}
+.login-form-input {
+  height: 50px;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #717171;
+  font-size: 14px;
+}
+.login-form-button {
+  display: block;
+  width: 330px;
+  height: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+  float: none;
+  border-radius: 40px;
+  background-color: #ff2f73;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: white;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.welcome-top {
+  padding-top: 50px;
+  padding-left: 50px;
+}
+.welcome-top-logo {
+  width: 76px;
+  height: 42px;
+  margin-right: 35px;
+  float: left;
+  background-image: url('../images/logoblue-lukka.png');
+  background-position: 50% 10%;
+  background-size: 73px;
+  background-repeat: no-repeat;
+}
+.welcome-top-left {
+	float:left;
+	width:30%;
+}
+.welcome-top-center {
+	float:left;
+	width:30%;
+	text-align: left;
+}
+.welcome-top-right {
+	float:right;
+	width:30%;
+	text-align: center;
+}
+.float-right {
+	float:right;
+}
+.float-left {
+	float:left;
+}
+.wrapper-welcome {
+  display: block;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url('../images/rombo-grey.png'), url('../images/rombo-bigpurple.png'), url('../images/login-bkg.jpg');
+  background-position: 0px 316px, 100% 0px, 0px 100%;
+  background-size: 165px, 779px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.welcome-intro {
+  padding: 115px 50px 200px;
+}
+.welcome-intro-fraseuno {
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #210049;
+  font-size: 72px;
+  line-height: 80px;
+}
+.welcome-intro-name {
+  padding-bottom: 100px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #9b9b9b;
+  font-size: 26px;
+  line-height: 32px;
+}
+.welcome-intro-frasedos {
+  padding-bottom: 35px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #ff2f73;
+  font-size: 16px;
+  line-height: 14px;
+}
+.welcome-intro-left {
+  display: block;
+  width: 50%;
+  padding-bottom: 50px;
+  float: left;
+}
+.welcome-intro-titulo {
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #210049;
+  font-size: 16px;
+  line-height: 21px;
+}
+.welcome-intro-texto {
+  font-family: Avenirnextltpro, sans-serif;
+  color: #210049;
+  font-size: 34px;
+  line-height: 41px;
+}
+.welcome-intro-texto.mail {
+  font-size: 26px;
+  line-height: 31px;
+}
+.welcome-intro-mensaje {
+  font-family: Avenirnextltpro, sans-serif;
+  color: #717171;
+  font-size: 14px;
+  line-height: 18px;
+}
+.welcome-intro-separador {
+  width: 20%;
+  height: 2px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #42e5b3;
+}
+.welcome-intro-right {
+  display: block;
+  width: 35%;
+  float: right;
+}
+.welcome-saldo-titulo {
+  padding-bottom: 30px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  font-size:32px;
+  text-transform:uppercase;
+  color: white;
+}
+.welcome-saldo-cifra {
+  padding-bottom: 20px;
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: white;
+  font-size: 72px;
+  line-height: 50px;
+  font-weight: 800;
+}
+.welcome-saldo-img {
+  width: 330px;
+  height: 90px;
+  background-image: url('../images/ondas-saldo.png');
+  background-position: 0px 0%;
+  background-size: 330px;
+  background-repeat: no-repeat;
+}
+.welcome-saldo-imgdos {
+  width: 330px;
+  height: 20px;
+  background-image: url('../images/ondas-saldo.png');
+  background-position: 0px 0%;
+  background-size: 330px;
+  background-repeat: no-repeat;
+}
+.wrapper-bloqueo {
+  display: block;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #d8d8d8;
+  background-image: url('../images/icon-bloqueo.png'), url('../images/rombo-red.png'), url('../images/bloqueo-bkg.png');
+  background-position: 70% 25%, 100% 0%, 50% 100% ;
+  background-size: 120px, 900px, 1426px;
+  background-repeat: no-repeat
+}
+.wrapper-bloqueada {
+  display: block;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #d8d8d8;
+  background-image: url('../images/icon-cuentabloqueada.png'), url('../images/rombo-yellow.png'), url('../images/bloqueo-bkg.png');
+  background-position: 70% 25%, 100% 0%, 50% 100% ;
+  background-size: 120px, 900px, 1426px;
+  background-repeat: no-repeat
+}
+.bloqueo-divisor {
+  width: 220px;
+  height: 70px;
+  background-image: url('../images/ondas-purple.png');
+  background-position: 50% 50%;
+  background-size: 219px;
+  background-repeat: no-repeat;
+}
+.bloqueo-intro {
+  padding: 115px 50px 200px;
+}
+.bloqueo-intro-fraseuno {
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #ff2f73;
+  font-size: 72px;
+  line-height: 80px;
+  font-weight: 800;
+}
+.bloqueo-intro-fraseuno span {
+  color: #210049;
+}
+.bloqueo-intro-frasedos {
+  padding-bottom: 55px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #717171;
+  font-size: 14px;
+  line-height: 18px;
+}
+.bloqueo-intro-frasetres {
+  padding-bottom: 40px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #210049;
+  font-size: 16px;
+  line-height: 14px;
+}
+.bloqueo-intro-titulo {
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #E02A67;
+  font-size: 16px;
+  line-height: 19px;
+}
+.bloqueo-intro-titulo span {
+  color: #9B9B9B;
+}
+.bloqueo-intro-texto {
+  padding-bottom: 30px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #717171;
+  font-size: 34px;
+  line-height: 41px;
+}
+.bloqueo-intro-texto.mail {
+  font-size: 26px;
+}
+.bloqueo-confirmacion {
+  display: block;
+  width: 25%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 20px;
+  border-top: 1px solid #ff2f73;
+  float:left;
+  clear:both;
+
+}
+.bloqueo-confirmacion-frase {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 40px;
+  font-family: Avenirnextltpro, sans-serif;
+  color: #210049;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+}
+.bloqueo-confirmacion-boton {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  padding:20px;
+}
+.bloqueo-confirmacion-boton a {
+  font-family: Avenirnextltpro, sans-serif;
+  color: #210049;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+}
+.wrapper-preguntas {
+  display: block;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url('../images/rombo-biggrey-right.png'), url('../images/rombo-grey.png'), url('../images/login-bkg.jpg');
+  background-position: 100% 0px, 0px 306px, 0px 100%;
+  background-size: 855px, 165px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.preguntas-intro {
+  padding: 140px 50px 100px;
+}
+.preguntas-intro-fraseuno {
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #210049;
+  font-size: 72px;
+  line-height: 60px;
+  font-weight: 800;
+}
+.preguntas-intro-frase {
+  padding-bottom: 45px;
+  font-family:'Avenirnextltpro mediumcn', sans-serif;
+  color: #9b9b9b;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 2px;
+}
+.preguntas-acordion {
+  padding-right: 45px;
+  padding-left: 45px;
+}
+.preguntas-closed {
+  padding: 25px 40px;
+  border-bottom: 1px solid #ff2f73;
+  background-image: url('../images/plus.svg');
+  background-position: 96% 50%;
+  background-repeat: no-repeat;
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: #210049;
+  font-size: 26px;
+  line-height: 30px;
+}
+.preguntas-destacado {
+  padding-top: 130px;
+  padding-bottom: 100px;
+}
+.preguntas-open {
+  padding: 25px 40px;
+  background-color: rgba(255, 47, 115, 0.85);
+  background-image: url('../images/minus.svg');
+  background-position: 96% 50%;
+  background-repeat: no-repeat;
+  font-family:'Avenirnextltpro demi', sans-serif;
+  color: white;
+  font-size: 26px;
+  line-height: 30px;
+}
+.preguntas-openbox {
+  padding-right: 38px;
+  padding-left: 38px;
+  border-bottom: 5px solid #ff2f73;
+  background-color: rgba(244, 244, 244, 0.49);
+}
+.preguntas-openbox-item {
+  padding: 25px 10px;
+  border-bottom: 1px solid #717171;
+}
+.preguntas-openbox-item.noborder {
+  border-bottom: 0px none transparent;
+}
+.preguntas-openbox-titulo {
+  font-family: Avenirnextltpro, sans-serif;
+  color: #210049;
+  font-size: 16px;
+  line-height: 28px;
+}
+.preguntas-openbox-texto {
+  font-family: Avenirnextltpro, sans-serif;
+  color: #717171;
+  font-size: 14px;
+  line-height: 24px;
+}
+.wrapper-merchant {
+  display: block;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url('../images/login-bkg.jpg'), url('../images/rombo-yellow.jpg');
+  background-position: 0px 100%, 100% 0px;
+  background-size: 672px, 856px;
+  background-repeat: no-repeat, no-repeat;
+}
+.wrapper-terminos {
+  display: block;
+  width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url('../images/rombo-biggrey.png'), url('../images/rombo-grey.png');
+  background-position: 0px 100%, 0px 296px;
+  background-size: 666px, 165px;
+  background-repeat: no-repeat, no-repeat;
+}
+.terminos-box {
+  padding-right: 50px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+}
+.terminos-box-texto {
+  font-family: Avenirnextltpro, sans-serif;
+  color: black;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+@media (max-width: 1366px) {
+  .wrapper-general {
+    width: 100%;
+    background-size: 125px, 700px;
+  }
+.features {
+  background-position: 0% 100%;
+  background-size: 600px;
+}
+.feature-frase {
+  font-size: 32px;
+  line-height: 36px;
+  padding-top: 80px;
+}
+.features-pagar {
+  width: 400px;
+}
+.features-pedir {
+  width: 400px;
+}
+.features-enviarplata {
+  width: 400px;
+  padding-bottom: 40px;
+}
+.features-picture {
+  height: 398px;
+  background-position: 50% 0px;
+  background-size: 455px;
+}
+.features-right {
+  width: 800px;
+}
+.features-ondas {
+  width: 60%;
+}
+.features-destacado {
+  padding: 25px 60px 25px 30px;
+}
+.features-destacado-img {
+  left: 600px;
+}
+.benefits-box {
+  background-position: 32% 50%;
+}
+.benefits-titulo {
+  font-size: 14px;
+  line-height: 20px;
+}
+.benefits-texto {
+  font-size: 14px;
+}
+.timeline-box-centerleft {
+  width: 110px;
+}
+.timeline-box-centerright {
+  width: 1100px;
+}
+.timeline-box-diagonal-up {
+  background-position: 80% 0px, 45% 0px, 115px 0px;
+}
+.timeline-box-lineppal {
+  background-size: 1000px;
+}
+.timeline-box-diagonal-down {
+  background-position: 86% 0px, 63% 0px, 39% 0px, 175px 0px;
+}
+.wrapper-login {
+  width: 100%;
+  background-position: 0px 100%, 100% 0px;
+  background-size: 672px, 800px;
+  background-repeat: no-repeat, no-repeat;
+}
+.wrapper-welcome {
+  width: 100%;
+  background-image: url('../images/rombo-grey.png'), url('../images/rombo-bigpurple.png'), url('../images/login-bkg.jpg');
+  background-position: 0px 316px, 130% -100px, 0px 100%;
+  background-size: 165px, 950px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.wrapper-bloqueo {
+  width: 100%;
+  background-image: url('../images/icon-bloqueo.png'), url('../images/rombo-red.png'), url('../images/bloqueo-bkg.png');
+  background-position: 75% 23%, 100% 0%, 50% 100% ;
+  background-size: 90px, 750px, 1426px;
+  background-repeat: no-repeat
+}
+.wrapper-bloqueada {
+  width: 100%;
+  background-image: url('../images/icon-cuentabloqueada.png'), url('../images/rombo-yellow.png'), url('../images/bloqueo-bkg.png');
+  background-position: 75% 23%, 100% 0%, 50% 100% ;
+  background-size: 90px, 750px, 1426px;
+  background-repeat: no-repeat
+}
+.wrapper-merchant {
+  width: 100%;
+  background-image: url('../images/login-bkg.jpg'), url('../images/rombo-yellow.jpg');
+  background-position: 0px 100%, 100% 0px;
+  background-size: 652px, 800px;
+  background-repeat: no-repeat, no-repeat;
+}
+.wrapper-preguntas {
+  width: 100%;
+  background-image: url('../images/rombo-biggrey-right.png'), url('../images/rombo-grey.png'), url('../images/login-bkg.jpg');
+  background-position: 100% 0px, 0px 306px, 0px 100%;
+  background-size: 655px, 165px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.wrapper-terminos {
+  width: 100%;
+  background-image: url('../images/rombo-biggrey.png'), url('../images/rombo-grey.png');
+  background-position: 0px 100%, 0px 296px;
+  background-size: 666px, 165px;
+  background-repeat: no-repeat, no-repeat;
+}
+
+}
+
+@media (max-width: 1280px) {
+  .wrapper-general {
+    width: 100%;
+    background-size: 125px, 700px;
+  }
+.features {
+  background-position: 0% 100%;
+  background-size: 572px;
+}
+.feature-frase {
+  font-size: 28px;
+  line-height: 32px;
+}
+.features-pagar {
+  width: 370px;
+}
+.features-pedir {
+  width: 370px;
+}
+.features-enviarplata {
+  width: 370px;
+  padding-bottom: 40px;
+}
+.features-picture {
+  height: 398px;
+  background-position: 50% 0px;
+  background-size: 455px;
+}
+.features-right {
+  width: 740px;
+}
+.features-ondas {
+  width: 57.5%;
+}
+.features-destacado {
+  padding: 25px 60px 25px 20px;
+}
+.features-destacado-img {
+  left: 580px;
+}
+.benefits-box {
+  background-position: 32% 50%;
+}
+.benefits-titulo {
+  font-size: 14px;
+  line-height: 20px;
+}
+.benefits-texto {
+  font-size: 14px;
+}
+.timeline-box-centerleft {
+  width: 100px;
+}
+.timeline-box-centerright {
+  width: 1000px;
+}
+.timeline-box-diagonal-up {
+  background-position: 85% 0px, 50% 0px, 115px 0px;
+}
+.timeline-box-lineppal {
+  background-size: 1000px;
+}
+.timeline-box-diagonal-down {
+  background-position: 91% 0px, 67% 0px, 43% 0px, 189px 0px;
+}
+.wrapper-login {
+  width: 100%;
+  background-position: 0px 100%, 100% 0px;
+  background-size: 672px, 700px;
+  background-repeat: no-repeat, no-repeat;
+}
+.wrapper-welcome {
+  width: 100%;
+  background-image: url('../images/rombo-grey.png'), url('../images/rombo-bigpurple.png'), url('../images/login-bkg.jpg');
+  background-position: 0px 316px, 135% -75px, 0px 100%;
+  background-size: 165px, 920px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.wrapper-bloqueo {
+  width: 100%;
+  background-image: url('../images/icon-bloqueo.png'), url('../images/rombo-red.png'), url('../images/bloqueo-bkg.png');
+  background-position: 82% 18%, 100% 0%, 50% 100% ;
+  background-size: 90px, 600px, 1426px;
+  background-repeat: no-repeat
+}
+.wrapper-bloqueada {
+  width: 100%;
+  background-image: url('../images/icon-cuentabloqueada.png'), url('../images/rombo-yellow.png'), url('../images/bloqueo-bkg.png');
+  background-position: 82% 18%, 100% 0%, 50% 100% ;
+  background-size: 90px, 600px, 1426px;
+  background-repeat: no-repeat
+}
+.wrapper-merchant {
+  width: 100%;
+  background-image: url('../images/login-bkg.jpg'), url('../images/rombo-yellow.jpg');
+  background-position: 0px 100%, 100% 0px;
+  background-size: 652px, 700px;
+  background-repeat: no-repeat, no-repeat;
+}
+.wrapper-preguntas {
+  width: 100%;
+  background-image: url('../images/rombo-biggrey-right.png'), url('../images/rombo-grey.png'), url('../images/login-bkg.jpg');
+  background-position: 100% 0px, 0px 306px, 0px 100%;
+  background-size: 605px, 165px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.wrapper-terminos {
+  width: 100%;
+  background-image: url('../images/rombo-biggrey.png'), url('../images/rombo-grey.png');
+  background-position: 0px 100%, 0px 296px;
+  background-size: 566px, 115px;
+  background-repeat: no-repeat, no-repeat;
+}
+}
+@media (max-width: 1024px) {
+  .wrapper-general {
+    width: 100%;
+    background-size: 125px, 550px;
+  }
+.top-left {
+  width: 60%;
+}
+.top-right {
+  width: 35%;
+}
+.top-intro-frasedos {
+  font-size: 60px;
+  line-height: 72px;
+}
+.features {
+  height: 650px;
+  background-position: 0% 100%;
+  background-size: 472px;
+}
+.feature-frase {
+  font-size: 24px;
+  line-height: 30px;
+  padding-top: 80px;
+}
+.features-pagar {
+  width: 300px;
+  padding:50px 10px 50px 10px;
+}
+.features-pedir {
+  width: 300px;
+  padding:50px 10px 50px 10px;
+}
+.features-enviarplata {
+  width: 300px;
+  padding:35px 10px 42px 10px;
+}
+.features-texto {
+	font-size:14px;
+	line-height:16px
+}
+.features-picture {
+  height: 305px;
+  background-position: 50% 0px;
+  background-size: 355px;
+}
+.features-right {
+  width: 600px;
+}
+.features-ondas {
+  width: 59%;
+  margin-top:0px;
+}
+.features-destacado {
+  top: 520px;
+  left: -10px;
+  padding: 25px 30px 25px 10px;
+}
+.features-destacado-img {
+  left: 480px;
+  top: 560px;
+  background-size: 79px;
+}
+.benefits-box {
+  background-position: 34% 50%;
+}
+.benefits-titulo {
+  font-size: 12px;
+  line-height: 16px;
+}
+.benefits-texto {
+  font-size: 12px;
+  line-height: 16px;
+}
+.timeline-box-centerleft {
+  width: 90px;
+}
+.timeline-box-centerright {
+  width: 865px;
+}
+.timeline-box-diagonal-up {
+  background-position: 80% 0px, 47% 0px, 115px 0px;
+}
+.timeline-box-lineppal {
+  background-size: 1000px;
+}
+.timeline-box-diagonal-down {
+  background-position: 83% 0px, 63% 0px, 43% 0px, 189px 0px;
+}
+.tools-frase {
+  background-position: 75% 50%, 25% 50%;
+  background-size: 103px, 103px;
+  font-size: 24px;
+  line-height: 30px;
+}
+.mapa-left {
+  display: inline-block;
+  width: 35%;
+  padding-top: 135px;
+  float: left;
+}
+.mapa-right {
+  display: inline-block;
+  width: 60%;
+  float: right;
+}
+.mapa-right-box{
+	height:500px;
+}
+.footer-menu-logo {
+  width: 10%;
+}
+.footer-menu-listabox {
+  width: 88%;
+  float: right;
+}
+.wrapper-login {
+  width: 100%;
+  background-position: 0px 100%, 100% 0px;
+  background-size: 622px, 600px;
+  background-repeat: no-repeat, no-repeat;
+}
+.wrapper-welcome {
+  width: 100%;
+  background-image: url('../images/rombo-grey.png'), url('../images/rombo-bigpurple.png'), url('../images/login-bkg.jpg');
+  background-position: 0px 316px, 185% -10px, 0px 100%;
+  background-size: 165px, 800px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.welcome-top-left {
+	float:left;
+	width:33%;
+}
+.welcome-top-center {
+	float:left;
+	width:35%;
+	text-align: left;
+}
+.welcome-top-right {
+	float:right;
+	width:25%;
+	text-align: center;
+}
+.welcome-saldo-titulo {
+  padding-top: 10px;
+  font-size:28px;
+}
+.welcome-saldo-cifra {
+  font-size: 60px;
+}
+.wrapper-bloqueo {
+  width: 100%;
+  background-image: url('../images/icon-bloqueo.png'), url('../images/rombo-red.png'), url('../images/bloqueo-bkg.png');
+  background-position: 88% 10%, 100% 0%, 50% 100% ;
+  background-size: 70px, 350px, 1100px;
+  background-repeat: no-repeat
+}
+.bloqueo-confirmacion {
+  width: 43%;
+}
+.wrapper-bloqueada {
+  width: 100%;
+  background-image: url('../images/icon-cuentabloqueada.png'), url('../images/rombo-yellow.png'), url('../images/bloqueo-bkg.png');
+  background-position: 88% 10%, 100% 0%, 50% 100% ;
+  background-size: 65px, 300px, 1100px;
+  background-repeat: no-repeat
+}
+.wrapper-merchant {
+  width: 100%;
+  background-image: url('../images/login-bkg.jpg'), url('../images/rombo-yellow.jpg');
+  background-position: 0px 100%, 100% 0px;
+  background-size: 600px, 500px;
+  background-repeat: no-repeat, no-repeat;
+}
+.wrapper-preguntas {
+  width: 100%;
+  background-image: url('../images/rombo-biggrey-right.png'), url('../images/rombo-grey.png'), url('../images/login-bkg.jpg');
+  background-position: 100% 0px, 0px 306px, 0px 100%;
+  background-size: 455px, 125px, 672px;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+.wrapper-terminos {
+  width: 100%;
+  background-image: url('../images/rombo-biggrey.png'), url('../images/rombo-grey.png');
+  background-position: 0px 100%, 0px 296px;
+  background-size: 466px, 125px;
+  background-repeat: no-repeat, no-repeat;
+}
+}
+
+@media (max-width: 991px) {
+  .wrapper-general {
+    width: 100%;
+    background-size: 125px, 400px;
+  }
+  .top {
+    padding-top: 25px;
+  }
+.top-right {
+    width: 31%;
+}
+  .top-left {
+    width: 59%;
+    padding-left: 25px;
+  }
+  .top-logo {
+    height: 42px;
+  }
+  .top-menu-item.border {
+    padding-right: 15px;
+    padding-left: 0px;
+  }
+  .top-intro {
+    padding-top: 75px;
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+  .top-intro-frasedos {
+    font-size: 62px;
+    line-height: 65px;
+  }
+  .top-intro-divisor {
+    width: 200px;
+    height: 50px;
+  }
+  .top-intro-frasetres {
+    width: 75%;
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .features {
+    height: 1050px;
+    padding-right: 25px;
+    padding-left: 25px;
+    background-size: 550px;
+    background-position: 0% 0%;
+  }
+  .feature-frase {
+    width: 100%;
+    padding-top: 50px;
+    clear: both;
+  }
+  .features-box {
+    top: -141px;
+    float: none;
+    clear: both;
+  }
+  .features-pagar {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .features-pedir {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .features-enviarplata {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+  .features-picture {
+    height: 328px;
+    background-size: cover;
+  }
+  .features-right {
+    width: 100%;
+    margin-top: 100px;
+    float: none;
+  }
+  .features-ondas {
+    left: 200px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+	margin-top:-45px;
+  }
+  .features-destacado {
+    left: 145px;
+    top: 480px;
+  }
+  .features-destacado-img {
+    left: 635px;
+    top: 520px;
+  }
+  .benefits {
+    padding-top: 25px;
+  }
+  .benefits-column {
+    padding-right: 3px;
+    padding-left: 3px;
+  }
+  .benefits-box {
+    padding: 5px;
+    background-position: 35% 50%;
+  }
+  .benefits-titulo {
+    width: 43%;
+    float: left;
+    font-size: 11px;
+    line-height: 16px;
+  }
+  .benefits-texto {
+    width: 55%;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .timeline {
+    padding-top: 75px;
+    background-size: 333px;
+  }
+  .timeline-box {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+  .timeline-box-top {
+    padding-left: 85px;
+  }
+  .timeline-box-topcolumn {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .timeline-box-centerleft {
+    width: 12%;
+  }
+  .timeline-box-centerright {
+    width: 87%;
+  }
+  .timeline-box-diagonal-up {
+    background-position: 74% 0px, 38% 0px, 12px 0px;
+  }
+  .timeline-box-lineppal {
+    background-size: contain;
+  }
+  .timeline-box-diagonal-down {
+    background-position: 78% 0px, 53% 0px, 28% 0px, 28px 0px;
+  }
+  .timeline-box-bottom {
+    padding-left: 150px;
+  }
+  .tools {
+    padding-top: 50px;
+  }
+  .tools-frase {
+    background-position: 85% 50%, 15% 50%;
+  }
+  .tools-box {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .tools-titulo {
+    padding-top: 30px;
+    padding-bottom: 15px;
+  }
+  .mapa {
+    padding: 50px 25px;
+	background-image:none;
+  }
+  .mapa-left {
+    width: 100%;
+    padding-top: 0px;
+    float: none;
+  }
+  .mapa-right {
+    width: 100%;
+  }
+  .mapa-texto {
+    padding-bottom: 22px;
+  }
+  .mapa-box {
+    width: 49%;
+    margin-bottom: 40px;
+    float: left;
+  }
+  .mapa-right-box {
+    height: 650px;
+    float: none;
+    background-size: contain;
+  }
+  .footer {
+    padding-top: 25px;
+    padding-bottom: 125px;
+  }
+  .footer-left {
+    display: block;
+    width: 100%;
+    padding-bottom: 45px;
+  }
+  .footer-right {
+    display: block;
+    width: 100%;
+    padding-bottom: 25px;
+    float: none;
+  }
+  .footer-menu-logo {
+    width: 9%;
+  }
+  .footer-menu-listabox {
+    width: 90%;
+	padding-top:10px;
+  }
+  .footer-menu-lista-item {
+    padding-right: 10px;
+    padding-left: 0px;
+  }
+  .login-top {
+    padding-left: 25px;
+  }
+  .login-intro {
+    padding-top: 37px;
+    padding-bottom: 235px;
+    padding-left: 25px;
+  }
+  .wrapper-login {
+    width: 100%;
+    background-size: 572px, 430px;
+  }
+  .login-top-frase {
+    display: block;
+    padding-top: 20px;
+    clear: both;
+    font-size: 62px;
+    line-height: 65px;
+  }
+  .login-form {
+    width: 50%;
+  }
+  .welcome-top {
+    padding-top: 25px;
+    padding-left: 25px;
+  }
+  .wrapper-welcome {
+    width: 100%;
+    background-position: 0px 175px, 120% -60px, 0px 100%;
+    background-size: 165px, 600px, 672px;
+  }
+  .welcome-intro {
+    padding: 60px 25px 100px;
+    clear: both;
+  }
+  .welcome-intro-fraseuno {
+    font-size: 62px;
+    line-height: 65px;
+  }
+  .welcome-intro-name {
+    padding-bottom: 50px;
+  }
+  .welcome-intro-right {
+    margin-top: -10px;
+  }
+  .welcome-saldo-titulo {
+    font-size: 20px;
+	padding-bottom:10px;
+  }
+  .welcome-saldo-cifra {
+    padding-bottom: 10px;
+    font-size: 60px;
+    line-height: 65px;
+  }
+  .welcome-saldo-img {
+    width: 75%;
+    background-size: contain;
+  }
+.welcome-saldo-imgdos {
+    width: 75%;
+    height: 15px;
+    background-size: 250px;
+}
+  .wrapper-bloqueo {
+    width: 100%;
+  }
+  .bloqueo-intro {
+    padding: 65px 25px 100px;
+  }
+  .bloqueo-intro-fraseuno {
+    font-size: 62px;
+    line-height: 65px;
+  }
+  .bloqueo-confirmacion {
+    width: 45%;
+    padding-top: 10px;
+  }
+  .bloqueo-confirmacion-frase {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .bloqueo-confirmacion-boton {
+    width: 100%;
+    text-align: center;
+  }
+  .wrapper-preguntas {
+    width: 100%;
+    background-position: 100% 0px, 0px 272px, 0px 100%;
+    background-size: 455px, 125px, 672px;
+  }
+  .preguntas-intro {
+    padding: 70px 25px 50px;
+  }
+  .preguntas-intro-fraseuno {
+    font-size: 62px;
+    line-height: 65px;
+  }
+  .preguntas-acordion {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+  .preguntas-closed {
+    padding: 15px 20px;
+  }
+  .preguntas-destacado {
+    padding-top: 65px;
+    padding-bottom: 50px;
+  }
+  .preguntas-open {
+    padding: 15px 20px;
+  }
+  .preguntas-openbox {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .preguntas-openbox-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .wrapper-merchant {
+    width: 100%;
+    background-size: 572px, 430px;
+  }
+  .wrapper-terminos {
+    width: 100%;
+    background-size: 466px, 165px;
+  }
+  .terminos-box {
+    padding-right: 25px;
+    padding-bottom: 50px;
+    padding-left: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .button.boton-bloquear {
+    display: inline-block;
+    margin-top: 20px;
+  }
+  .wrapper-general {
+    background-size: 125px, 300px;
+  }
+  .top-left {
+    display: block;
+    width: 100%;
+    padding-bottom: 25px;
+  }
+  .top-logo {
+    height: 22px;
+  }
+  .top-menu {
+    width: 100%;
+	clear:both;
+	padding-top:10px;
+  }
+  .top-menu-item {
+    padding-left: 25px;
+  }
+  .top-right {
+    display: block;
+    width: 100%;
+    text-align: left;
+	padding-top:10px;
+  }
+  .top-intro {
+    padding-top: 40px;
+  }
+  .top-intro-frasedos {
+    font-size: 52px;
+    line-height: 55px;
+  }
+  .top-intro-divisor {
+    width: 180px;
+  }
+  .features {
+    height: 1000px;
+    background-size: 450px;
+  }
+  .feature-frase {
+    padding-top: 25px;
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .features-box {
+    top: -104px;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+  .features-pagar {
+    padding: 25px 10px;
+  }
+  .features-pagar-icon {
+    height: 40px;
+    background-size: contain;
+  }
+  .features-titulo {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .features-texto {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .features-pedir {
+    padding: 40px 10px 50px 10px;
+  }
+  .features-pedir-icon {
+    height: 40px;
+    background-size: contain;
+  }
+  .features-enviarplata {
+    padding: 25px 10px 10px;
+  }
+  .features-enviarplata-icon {
+    height: 40px;
+    background-size: contain;
+  }
+  .features-picture {
+    height: 262px;
+  }
+  .features-right {
+    margin-top: 100px;
+  }
+  .features-ondas {
+	margin-top: -5px;
+    left: 157px;
+    height: 46px;
+    background-size: contain;
+  }
+  .features-destacado {
+    left: 13px;
+	text-align:center;
+    top: 375px;
+    width: 95%;
+    padding: 15px;
+  }
+  .features-destacado-frase {
+    font-size: 13px;
+  }
+  .features-destacado-smile {
+    margin-left: 10px;
+  }
+  .features-destacado-img {
+    left: 556px;
+    top: 439px;
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+  }
+  .benefits {
+    padding-top: 0px;
+  }
+  .benefits-frase {
+    padding-top: 15px;
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .benefits-box {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+  .benefits-titulo {
+    width: 45%;
+    padding-top: 0px;
+    font-size: 14px;
+  }
+  .benefits-texto {
+    width: 55%;
+    font-size: 14px;
+  }
+  .timeline {
+    background-size: 250px;
+  }
+  .timeline-box {
+    padding-bottom: 10px;
+  }
+  .timeline-box-top {
+    width: 30%;
+    padding-left: 20px;
+    float: left;
+  }
+  .timeline-box-topcolumn {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .timeline-date {
+    padding-top: 29px;
+    padding-bottom: 29px;
+  }
+  .timeline-box-center {
+    display: inline-block;
+    width: 35%;
+    float: left;
+  }
+  .timeline-box-centerleft {
+    width: 100%;
+    height: 30px;
+  }
+  .timeline-box-bottom {
+    width: 30%;
+    padding-top: 180px;
+    padding-left: 0px;
+    float: left;
+  }
+  .tools-frase {
+    background-position: 98% 50%, 13px 50%;
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .tools-icon {
+    width: 120px;
+    height: 120px;
+  }
+  .tools-icon.icon-metas {
+    background-size: contain;
+  }
+  .tools-icon.icon-bolsillos {
+    background-size: contain;
+  }
+  .tools-icon.icon-guardadito {
+    background-size: contain;
+  }
+  .tools-texto {
+    padding-bottom: 25px;
+  }
+  .tools-titulo {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  .mapa {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .mapa-right-box {
+    height: 470px;
+  }
+  .footer-contactos {
+    padding-top: 20px;
+  }
+  .footer-contacto-icono.icon-chat {
+    background-size: contain;
+  }
+  .footer-contacto-icono.icon-phone {
+    background-size: contain;
+  }
+  .footer-contacto-icono.icon-mail {
+    background-size: contain;
+  }
+  .footer-menu-logo {
+    width: 100%;
+    height: 57px;
+    float: none;
+  }
+  .footer-menu-listabox {
+    width: 100%;
+    float: none;
+  }
+  .footer-menu-lista-item {
+    font-size: 13px;
+    line-height: 18px;
+	float:left;
+  }
+  .login-intro {
+    padding-top: 50px;
+    padding-bottom: 200px;
+  }
+  .wrapper-login {
+    background-position: 0% 100%, 100% 0px;
+    background-size: 600px, 300px;
+  }
+  .login-top-frase {
+    padding-top: 0px;
+    font-size: 52px;
+    line-height: 55px;
+  }
+  .login-top-frasetres {
+    padding-bottom: 25px;
+  }
+  .login-form {
+    width: 60%;
+  }
+  .wrapper-welcome {
+    background-position: 0px 166px, 150% -25px, 0px 100%;
+    background-size: 165px, 550px, 672px;
+  }
+.welcome-top-left {
+	float:none;
+	width:100%;
+}
+.welcome-top-center {
+	float:left;
+	width:50%;
+	text-align: left;
+	padding-top:20px;
+}
+.welcome-top-right {
+	float:right;
+	width:40%;
+	text-align: center;
+}
+  .welcome-intro {
+    padding-bottom: 75px;
+  }
+  .welcome-intro-fraseuno {
+    font-size: 50px;
+    line-height: 55px;
+  }
+  .welcome-intro-name {
+    padding-bottom: 25px;
+    font-size: 21px;
+  }
+  .welcome-intro-texto {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .welcome-intro-texto.mail {
+    font-size: 21px;
+    line-height: 28px;
+  }
+  .welcome-intro-right {
+    margin-top: -60px;
+  }
+  .welcome-saldo-titulo {
+    font-size: 18px;
+	padding-bottom:5px;
+  }
+  .welcome-saldo-cifra {
+    padding-bottom: 5px;
+    font-size: 40px;
+    line-height: 45px;
+  }
+  .welcome-saldo-img {
+    width: 65%;
+    background-size: contain;
+  }
+  .welcome-saldo-imgdos {
+    width: 65%;
+    height: 10px;
+    background-size: 170px;
+  }
+.wrapper-bloqueo {
+  width: 100%;
+  background-image: url('../images/icon-bloqueo.png'), url('../images/rombo-red.png'), url('../images/bloqueo-bkg.png');
+  background-position: 87% 8%, 100% 0%, 50% 100% ;
+  background-size: 55px, 280px, 1100px;
+  background-repeat: no-repeat
+}
+.wrapper-bloqueada {
+  width: 100%;
+  background-image: url('../images/icon-cuentabloqueada.png'), url('../images/rombo-yellow.png'), url('../images/bloqueo-bkg.png');
+  background-position: 87% 8.5%, 100% 0%, 50% 100% ;
+  background-size: 45px, 230px, 1100px;
+  background-repeat: no-repeat
+}
+
+
+  .bloqueo-intro {
+    padding-top: 35px;
+    padding-bottom: 50px;
+  }
+  .bloqueo-intro-fraseuno {
+    font-size: 52px;
+    line-height: 55px;
+  }
+  .bloqueo-intro-texto {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .bloqueo-intro-texto.mail {
+    font-size: 21px;
+    line-height: 28px;
+  }
+  .bloqueo-confirmacion {
+	  width:55%;
+  }
+  .bloqueo-confirmacion-frase {
+    font-size: 21px;
+    line-height: 24px;
+  }
+  .timeline-box-lines {
+    width: 100%;
+    height: 650px;
+    background-image: url('../images/diagonal-rightline.png'), url('../images/diagonal-rightline.png'), url('../images/diagonal-rightline.png'), url('../images/diagonal-rightline.png'), url('../images/diagonal-leftline.png'), url('../images/diagonal-leftline.png'), url('../images/diagonal-leftline.png'), url('../images/line-straigh-vertical.png');
+    background-position: 100% 84%, 100% 60%, 100% 38%, 100% 106px, 0% 44%, 0% 22%, 0px 23px, 50% 0px;
+    background-size: 91px, 91px, 91px, 91px, 91px, 91px, 91px, auto;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+  .wrapper-preguntas {
+    background-position: 100% 0px, 0px 255px, 0px 100%;
+    background-size: 300px, 125px, 672px;
+  }
+  .preguntas-intro {
+    padding-top: 35px;
+    padding-bottom: 25px;
+  }
+  .preguntas-intro-fraseuno {
+    font-size: 50px;
+    line-height: 55px;
+  }
+  .preguntas-intro-frase {
+    padding-bottom: 30px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .preguntas-closed {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .preguntas-destacado {
+    padding-top: 45px;
+    padding-bottom: 30px;
+  }
+  .preguntas-open {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .preguntas-openbox {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .preguntas-openbox-titulo {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .wrapper-merchant {
+    background-size: 572px, 300px;
+  }
+  .wrapper-terminos {
+    background-size: 366px, 165px;
+  }
+}
+@media (max-width: 479px) {
+  .button.top-intro-boton {
+    padding-right: 86px;
+    padding-left: 86px;
+  }
+  .button.boton-cancelarbloqueo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .wrapper-general {
+    width: 100%;
+    background-size: 125px, 200px;
+  }
+  .top-left {
+    width: 100%;
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+  .top-right {
+    padding-top: 20px;
+  }
+  .top-logo {
+    width: 50%;
+    margin-bottom: 10px;
+    clear: both;
+    background-position: 0px 50%;
+  }
+  .top-menu {
+    display: block;
+    clear: both;
+  }
+  .top-menu-item {
+    display: block;
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .top-menu-item.border {
+    padding-top: 15px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+    border-right-style: none;
+  }
+  .top-intro {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .top-intro-frasedos {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .top-intro-divisor {
+    width: 120px;
+  }
+  .top-intro-frasetres {
+    width: 100%;
+    padding-bottom: 25px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .features {
+    height: 1450px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .feature-frase {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .features-box {
+    top: -137px;
+  }
+  .features-box-left {
+    width: 100%;
+    float: none;
+  }
+  .features-box-right {
+    width: 100%;
+    float: none;
+  }
+  .features-pagar {
+    padding-top: 35px;
+    border-top-right-radius: 10px;
+  }
+  .features-sep-white {
+    height: 30px;
+  }
+  .features-pedir {
+    padding-top: 35px;
+    border-bottom-left-radius: 0px;
+  }
+  .features-enviarplata {
+    padding-top: 35px;
+    border-top-right-radius: 0px;
+  }
+  .features-sep-blue {
+    height: 30px;
+  }
+  .features-picture {
+    border-bottom-left-radius: 10px;
+  }
+  .features-right {
+    margin-top: 100px;
+  }
+  .features-ondas {
+	margin-top:0px;
+    left: 70px;
+  }
+  .features-destacado {
+    left: 8px;
+    top: 796px;
+    text-align: center;
+  }
+  .features-destacado-frase {
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .features-destacado-smile {
+    margin-left: 0px;
+  }
+  .features-destacado-img {
+    left: 120px;
+    top: 939px;
+  }
+  .benefits {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .benefits-box {
+    padding: 10px;
+    background-position: 37% 50%;
+  }
+  .benefits-titulo {
+    width: 40%;
+    margin-right: 10px;
+    padding-top: 10px;
+  }
+  .benefits-texto {
+    width: 55%;
+  }
+  .timeline {
+    padding-top: 40px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .timeline-review {
+    width: 95%;
+    padding: 10px;
+  }
+  .timeline-review-pic {
+    float: left;
+  }
+  .timeline-review-textos {
+    width: 75%;
+    padding-left: 10px;
+    float: left;
+  }
+  .timeline-review-txt {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .timeline-box-top {
+    padding-left: 0px;
+  }
+  .tools {
+    padding-top: 25px;
+  }
+  .tools-frase {
+    background-image: none;
+    background-position: 0% 0%;
+    background-size: auto;
+    background-repeat: repeat;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .tools-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .tools-texto {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .mapa {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .mapa-texto {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .mapa-box-right {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .mapa-right-box {
+    height: 370px;
+  }
+  .mapa-right-titulo {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  .mapa-right-boton {
+    text-align: center;
+  }
+  .footer {
+    padding-left: 10px;
+  }
+  .footer-left {
+    padding-bottom: 20px;
+  }
+  .apple-store {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-position: 50% 50%;
+    text-align: center;
+  }
+  .googleplay {
+    width: 100%;
+    background-position: 50% 50%;
+    text-align: center;
+  }
+  .footer-contactos-box {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .footer-contacto-icono {
+    width: 100%;
+    height: 50px;
+	clear:both;
+  }
+  .footer-contacto-textos {
+    padding-top: 6px;
+    padding-left: 15px;
+	clear:both;
+  }
+  .login-top {
+    padding-left: 10px;
+  }
+  .login-intro {
+    padding: 20px 10px 100px;
+  }
+  .wrapper-login {
+    background-position: 50% 50%, 100% 0px;
+    background-size: contain, 180px;
+  }
+  .login-top-frase {
+    padding-top: 5px;
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .login-form {
+    width: 100%;
+  }
+  .login-form-button {
+    width: 100%;
+  }
+  .welcome-top {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .wrapper-welcome {
+    background-image: url('../images/rombo-grey.png'), url('../images/login-bkg.jpg');
+    background-position: 0px 271px, 0px 61%;
+    background-size: 80px, 332px;
+    background-repeat: no-repeat, no-repeat;
+  }
+.welcome-top-left {
+	float:none;
+	width:100%;
+	clear:both;
+}
+.welcome-top-center {
+	float:none;
+	width:100%;
+	text-align: left;
+	padding-top:20px;
+	margin-left:-20px;
+}
+.welcome-top-right {
+	float:none;
+	width:100%;
+	text-align: left;
+}
+  .welcome-intro {
+    padding: 30px 0px 40px 10px;
+  }
+  .welcome-intro-fraseuno {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .welcome-intro-left {
+    width: 100%;
+    padding-bottom: 10px;
+    float: none;
+  }
+  .welcome-intro-texto {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .welcome-intro-texto.mail {
+    font-size: 21px;
+    line-height: 24px;
+  }
+  .welcome-intro-right {
+    width: 100%;
+    height: 550px;
+    margin-top: 0px;
+    padding-top: 200px;
+    padding-right: 30px;
+    float: none;
+    background-image: url('../images/rombo-bigpurple.png');
+    background-position: -11% 39%;
+    background-size: 779px;
+    background-repeat: no-repeat;
+  }
+  .welcome-saldo-titulo {
+    text-align: right;
+    font-size: 16px;
+  }
+  .welcome-saldo-cifra {
+    font-size: 32px;
+    line-height: 40px;
+    text-align: right;
+  }
+  .welcome-saldo-img {
+    width: 100%;
+	height:25px;
+    background-size: contain;
+	background-position:100% 0%;
+  }
+  .welcome-saldo-imgdos {
+    width: 100%;
+    height: 7px;
+    background-size: 120px;
+	background-position:100% 0%;
+  }
+.wrapper-bloqueo {
+  width: 100%;
+  background-image: url('../images/icon-bloqueo.png'), url('../images/rombo-red.png'), url('../images/bloqueo-bkg.png');
+  background-position: 88% 2.5%, 100% 0%, 50% 84% ;
+  background-size: 25px, 120px, 1100px;
+  background-repeat: no-repeat
+}
+.wrapper-bloqueada {
+  width: 100%;
+  background-image: url('../images/icon-cuentabloqueada.png'), url('../images/rombo-yellow.png'), url('../images/bloqueo-bkg.png');
+  background-position: 90% 2.5%, 100% 0%, 50% 84% ;
+  background-size: 25px, 100px, 1100px;
+  background-repeat: no-repeat
+}
+
+  .bloqueo-intro {
+    padding: 20px 10px 35px;
+  }
+  .bloqueo-intro-fraseuno {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .bloqueo-intro-frasedos {
+    padding-bottom: 35px;
+  }
+  .bloqueo-intro-texto {
+    padding-bottom: 20px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .bloqueo-intro-texto.mail {
+    font-size: 21px;
+    line-height: 24px;
+  }
+  .bloqueo-confirmacion {
+	  width:100%
+  }
+  .bloqueo-confirmacion-frase {
+    padding-bottom: 25px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .timeline-box-lines {
+    height: 780px;
+    background-position: 100% 84%, 100% 60%, 100% 35%, 100% 128px, 0% 40%, 0% 17%, 0px 23px, 50% 0px;
+    background-size: 53px, 53px, 53px, 53px, 54px, 54px, 54px, auto;
+  }
+  .wrapper-preguntas {
+    background-position: 100% 0px, 0px 317px, 0px 79%;
+    background-size: 200px, 125px, 332px;
+  }
+  .preguntas-intro {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .preguntas-intro-fraseuno {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .preguntas-intro-frase {
+    padding-bottom: 20px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .preguntas-acordion {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .preguntas-closed {
+    padding: 10px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .preguntas-destacado {
+    padding: 20px;
+  }
+  .preguntas-open {
+    padding: 10px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .preguntas-openbox {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .preguntas-openbox-item {
+    padding: 12px 8px;
+  }
+  .preguntas-openbox-titulo {
+    margin-bottom: 7px;
+    line-height: 20px;
+  }
+  .preguntas-openbox-texto {
+    line-height: 21px;
+  }
+  .wrapper-merchant {
+    background-position: 50% 50%, 100% 0px;
+    background-size: contain, 180px;
+  }
+  .terminos-box {
+    padding-right: 10px;
+    padding-bottom: 25px;
+    padding-left: 10px;
+  }
+  .terminos-box-texto {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+@font-face {
+  font-family: 'Avenirltstd medium';
+  src: url('../fonts/AvenirLTStd-Medium.eot') format('embedded-opentype'), url('../fonts/AvenirLTStd-Medium.woff') format('woff'), url('../fonts/AvenirLTStd-Medium.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenirnextltpro ultlt';
+  src: url('../fonts/AvenirNextLTPro-UltLt.eot') format('embedded-opentype'), url('../fonts/AvenirNextLTPro-UltLt.woff') format('woff'), url('../fonts/AvenirNextLTPro-UltLt.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenirnextltpro';
+  src: url('../fonts/AvenirNextLTPro-Regular.eot') format('embedded-opentype'), url('../fonts/AvenirNextLTPro-Regular.woff') format('woff'), url('../fonts/AvenirNextLTPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenirnextltpro mediumcn';
+  src: url('../fonts/AvenirNextLTPro-MediumCn.eot') format('embedded-opentype'), url('../fonts/AvenirNextLTPro-MediumCn.woff') format('woff'), url('../fonts/AvenirNextLTPro-MediumCn.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenirnextltpro demi';
+  src: url('../fonts/AvenirNextLTPro-Demi.eot') format('embedded-opentype'), url('../fonts/AvenirNextLTPro-Demi.woff') format('woff'), url('../fonts/AvenirNextLTPro-Demi.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenirnextltpro cn';
+  src: url('../fonts/AvenirNextLTPro-Cn.eot') format('embedded-opentype'), url('../fonts/AvenirNextLTPro-Cn.woff') format('woff'), url('../fonts/AvenirNextLTPro-Cn.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenirnextltpro';
+  src: url('../fonts/AvenirNextLTPro-BoldCn.eot') format('embedded-opentype'), url('../fonts/AvenirNextLTPro-BoldCn.woff') format('woff'), url('../fonts/AvenirNextLTPro-BoldCn.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}

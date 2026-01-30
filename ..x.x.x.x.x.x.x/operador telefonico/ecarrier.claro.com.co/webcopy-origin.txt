@@ -1,0 +1,40 @@
+Uri: https://ecarrier.claro.com.co/assets/css/roboto.css
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\assets\css\roboto.css
+Content Type: 
+
+Uri: https://ecarrier.claro.com.co/MiClaro/favicon.ico
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\favicon.ico
+Content Type: image/x-icon
+
+Uri: https://ecarrier.claro.com.co/MiClaro/KFOmCnqEu92Fr1Mu4mxP.61bd5a131bd793c1.ttf
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\KFOmCnqEu92Fr1Mu4mxP.61bd5a131bd793c1.ttf
+Content Type: application/octet-stream
+
+Uri: https://ecarrier.claro.com.co/MiClaro/login/sendsms
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\login\sendsms.html
+Content Type: text/html
+
+Uri: https://ecarrier.claro.com.co/MiClaro/main.2.decf627b39a59ef6.js
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\main.2.decf627b39a59ef6.js
+Content Type: application/javascript
+
+Uri: https://ecarrier.claro.com.co/MiClaro/manifest.webmanifest
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\manifest.webmanifest
+Content Type: application/octet-stream
+
+Uri: https://ecarrier.claro.com.co/MiClaro/polyfills.2.4a1ea122eb5aec23.js
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\polyfills.2.4a1ea122eb5aec23.js
+Content Type: application/javascript
+
+Uri: https://ecarrier.claro.com.co/MiClaro/scripts.80a13cc9920f4f17.js
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\scripts.80a13cc9920f4f17.js
+Content Type: application/javascript
+
+Uri: https://ecarrier.claro.com.co/MiClaro/styles.e412847395285d77.css
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\MiClaro\styles.e412847395285d77.css
+Content Type: text/css
+
+Uri: https://www.facebook.com/tr?id=957276972649566&ev=PageView&noscript=1
+File Name: C:\Downloaded Web Sites\ecarrier.claro.com.co\tr
+Content Type: text/plain
+
