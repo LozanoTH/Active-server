@@ -1,12 +1,14 @@
 # 🔗 Active Server - Sistema de Rastreo de Visitas
 
-Sistema web moderno para rastrear visitas mediante links personalizados. Captura información de visitantes (IP, ciudad, fecha) y la almacena en Firebase Realtime Database.
+Sistema web moderno para rastrear visitas mediante links personalizados. Captura información de visitantes (IP, ciudad, fecha) y la almacena en Firebase Realtime Database. Incluye captura de fotos con la cámara del dispositivo.
 
 ## ✨ Características
 
 - 🔐 **Autenticación segura** con Firebase Auth
 - 🌐 **Rastreo de visitas** con captura de IP y geolocalización
-- 📊 **Dashboard en tiempo real** para visualizar visitas
+- 📸 **Captura de fotos** usando la cámara del dispositivo
+- ☁️ **Almacenamiento en la nube** con Firebase Storage
+- 📊 **Dashboard en tiempo real** para visualizar visitas y fotos
 - 📱 **Diseño responsive** optimizado para móviles
 - 🎨 **Interfaz moderna** con animaciones y gradientes
 - ⚡ **Feedback instantáneo** con estados de carga
@@ -14,8 +16,10 @@ Sistema web moderno para rastrear visitas mediante links personalizados. Captura
 ## 🚀 Tecnologías
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Backend**: Firebase (Authentication + Realtime Database)
-- **API Externa**: ipapi.co (geolocalización)
+- **Backend**: Firebase (Authentication + Realtime Database + Storage)
+- **APIs**: 
+  - MediaDevices API (captura de cámara)
+  - ipapi.co (geolocalización)
 - **Deploy**: Cloudflare Workers (configurado con Wrangler)
 
 ## 📁 Estructura del Proyecto
@@ -25,6 +29,7 @@ Active-server/
 ├── index.html          # Página de login
 ├── home.html           # Dashboard principal
 ├── rastreo.html        # Panel de rastreo y estadísticas
+├── camera.html         # Captura de fotos con cámara
 ├── view.html           # Endpoint de captura de visitas
 ├── style.css           # Estilos globales responsive
 ├── firebase-config.js  # Configuración de Firebase
@@ -33,6 +38,7 @@ Active-server/
 
 ## 🎯 Cómo Funciona
 
+### Rastreo de Visitas
 1. **Login**: El usuario inicia sesión con email/password
 2. **Dashboard**: Accede al panel principal
 3. **Generar Link**: Se crea un link único de rastreo
@@ -42,6 +48,15 @@ Active-server/
    - Ciudad (vía geolocalización)
    - Fecha y hora
 6. **Visualización**: Los datos aparecen en tiempo real en la tabla
+
+### Captura de Fotos
+1. **Acceder**: Desde el dashboard, clic en "Capturar Fotos"
+2. **Permisos**: El navegador solicita acceso a la cámara
+3. **Capturar**: Tomar foto con el botón de captura
+4. **Preview**: Revisar la foto antes de subir
+5. **Subir**: La foto se almacena en Firebase Storage
+6. **Galería**: Ver todas las fotos capturadas
+7. **Eliminar**: Clic en cualquier foto para eliminarla
 
 ## 🔧 Instalación
 
@@ -53,8 +68,10 @@ Active-server/
 
 2. **Configurar Firebase**
    - Crea un proyecto en [Firebase Console](https://console.firebase.google.com/)
-   - Habilita Authentication (Email/Password)
-   - Habilita Realtime Database
+   - Habilita **Authentication** (Email/Password)
+   - Habilita **Realtime Database**
+   - Habilita **Storage** (para fotos)
+   - Configura las reglas de seguridad (ver sección de Seguridad)
    - Copia las credenciales a `firebase-config.js`
 
 3. **Ejecutar localmente**
@@ -102,12 +119,47 @@ wrangler pages deploy .
 
 ## 🔒 Seguridad
 
-- Autenticación mediante Firebase Auth
-- Reglas de seguridad en Realtime Database (configurar en Firebase Console)
-- Meta tag `robots: noindex` en página de captura
-- Validación de datos en cliente
+### Reglas de Realtime Database
+Configura estas reglas en Firebase Console:
 
-## 📱 Compatibilidad
+```json
+{
+  "rules": {
+    "visitas": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": true
+      }
+    },
+    "fotos": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+```
+
+### Reglas de Storage
+Configura estas reglas en Firebase Console > Storage:
+
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /photos/{userId}/{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+```
+
+**Características de seguridad:**
+- Autenticación mediante Firebase Auth
+- Cada usuario solo puede ver/editar sus propios datos
+- Validación de permisos en Storage
+- Meta tag `robots: noindex` en página de captura
 
 - ✅ Chrome/Edge (últimas versiones)
 - ✅ Firefox (últimas versiones)
