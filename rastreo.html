@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Rastreo | Control</title>
+    <style>
+        :root { --primary: #007bff; --dark: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; color: var(--dark); }
+        .container { max-width: 900px; margin: auto; }
+        .nav-back { margin-bottom: 20px; display: inline-block; text-decoration: none; color: var(--primary); font-weight: bold; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .link-box { display: flex; gap: 10px; background: #eee; padding: 10px; border-radius: 5px; align-items: center; overflow-x: auto; }
+        button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        button:hover { opacity: 0.8; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; font-size: 14px; }
+        th { background: var(--primary); color: white; }
+        tr:hover { background: #f1f1f1; }
+        .status { color: green; font-size: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="home.html" class="nav-back">← Volver al Menú</a>
+    
+    <div class="card">
+        <h2>Generador de Link de Rastreo</h2>
+        <p>Comparte este link. Cuando alguien lo abra, verás sus datos abajo.</p>
+        <div class="link-box">
+            <code id="share-link">Generando link...</code>
+        </div>
+        <br>
+        <button onclick="copyLink()">Copiar Link</button>
+        <span id="copy-status" class="status"></span>
+    </div>
+
+    <h3>Actividad Reciente <small>(En tiempo real)</small></h3>
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha y Hora</th>
+                    <th>IP</th>
+                    <th>Ubicación</th>
+                    <th>Dispositivo (User Agent)</th>
+                </tr>
+            </thead>
+            <tbody id="logs-body">
+                <tr><td colspan="4" style="text-align:center;">Esperando datos...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="module">
+    import { auth, db, ref } from './firebase-config.js';
+    import { onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    auth.onAuthStateChanged((user) => {
+        if (!user) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        // 1. Generar el link apuntando a view.html
+        const trackingLink = `${window.location.origin}/view.html?id=${user.uid}`;
+        document.getElementById('share-link').innerText = trackingLink;
+
+        // 2. Escuchar la base de datos en tiempo real
+        const logsRef = ref(db, 'visitas/' + user.uid);
+        onValue(logsRef, (snapshot) => {
+            const tbody = document.getElementById('logs-body');
+            tbody.innerHTML = ""; 
+
+            if (!snapshot.exists()) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay registros aún.</td></tr>';
+                return;
+            }
+
+            // Convertir objeto a array para invertir el orden (más reciente arriba)
+            const logs = [];
+            snapshot.forEach(child => {
+                logs.push(child.val());
+            });
+            logs.reverse();
+
+            logs.forEach(data => {
+                const row = `<tr>
+                    <td>${data.fecha}</td>
+                    <td><strong>${data.ip}</strong></td>
+                    <td>${data.ciudad}, ${data.pais}</td>
+                    <td style="font-size:11px; color:#666;">${data.agente || 'N/A'}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        });
+    });
+
+    // Función global para el botón
+    window.copyLink = () => {
+        const text = document.getElementById('share-link').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const status = document.getElementById('copy-status');
+            status.innerText = "¡Copiado!";
+            setTimeout(() => status.innerText = "", 2000);
+        });
+    };
+</script>
+
+</body>
+</html>
