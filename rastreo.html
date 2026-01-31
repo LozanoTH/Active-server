@@ -1,70 +1,135 @@
-<link rel="stylesheet" href="style.css">
-<div class="card">
-    <a href="home.html">← Volver</a>
-    <h2>Rastreador</h2>
-    <div style="background:#eee; padding:10px; border-radius:5px; margin:10px 0;">
-        <code id="myLink">Generando...</code>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Rastreador de visitas - Active Server">
+    <meta name="theme-color" content="#4f46e5">
+    <title>Rastreador - Active Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card">
+        <a href="home.html">← Volver al inicio</a>
+        <h2>Rastreador de Visitas</h2>
+
+        <div style="background:#f8fafc; padding:16px; border-radius:8px; margin:16px 0; border:2px dashed #e2e8f0;">
+            <p style="margin:0 0 8px 0; font-size:13px; color:#64748b; font-weight:600;">TU LINK DE RASTREO:</p>
+            <code id="myLink">
+                <span class="loading"></span> Generando...
+            </code>
+        </div>
+
+        <button class="btn-blue" id="btn-copy">
+            Copiar Link
+        </button>
+        <button class="btn-red" id="btn-del">
+            Limpiar Datos
+        </button>
     </div>
-    <button class="btn-blue" id="btn-copy">Copiar Link</button>
-    <button class="btn-red" id="btn-del">Limpiar Datos</button>
-</div>
 
-<div class="card">
-    <table>
-        <thead><tr><th>IP</th><th>Ciudad</th><th>Fecha</th></tr></thead>
-        <tbody id="list"></tbody>
-    </table>
-</div>
+    <div class="card">
+        <h3 style="margin-bottom:16px; color:#1e293b;">Historial de Visitas</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>Ciudad</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+                    <tr>
+                        <td colspan="3" style="text-align:center;">
+                            <span class="loading"></span> Cargando...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<script type="module">
-    import { auth, db, ref, onValue, remove } from './firebase-config.js';
+    <script type="module">
+        import { auth, db, ref, onValue, remove } from './firebase-config.js';
 
-    // Capturamos los elementos correctamente
-    const txtLink = document.getElementById('myLink');
-    const tableList = document.getElementById('list');
-    const btnCopy = document.getElementById('btn-copy');
-    const btnDelete = document.getElementById('btn-del');
+        const txtLink = document.getElementById('myLink');
+        const tableList = document.getElementById('list');
+        const btnCopy = document.getElementById('btn-copy');
+        const btnDelete = document.getElementById('btn-del');
 
-    auth.onAuthStateChanged(u => {
-        if(!u) {
-            location.href = 'index.html';
-            return;
-        }
-
-        // 1. Generar Link
-        const link = `${window.location.origin}/view.html?id=${u.uid}`;
-        txtLink.innerText = link;
-
-        // 2. Escuchar Visitas
-        const visitasRef = ref(db, `visitas/${u.uid}`);
-        onValue(visitasRef, (snap) => {
-            tableList.innerHTML = "";
-            if (!snap.exists()) {
-                tableList.innerHTML = "<tr><td colspan='3' style='text-align:center'>Sin visitas</td></tr>";
+        auth.onAuthStateChanged(u => {
+            if (!u) {
+                location.href = 'index.html';
                 return;
             }
-            
-            snap.forEach(child => {
-                const v = child.val();
-                const row = `<tr>
-                    <td>${v.ip}</td>
-                    <td>${v.ciudad}</td>
-                    <td>${v.fecha}</td>
-                </tr>`;
-                tableList.innerHTML = row + tableList.innerHTML; // Lo más nuevo arriba
+
+            // 1. Generate tracking link
+            const link = `${window.location.origin}/view.html?id=${u.uid}`;
+            txtLink.textContent = link;
+
+            // 2. Listen for visits
+            const visitasRef = ref(db, `visitas/${u.uid}`);
+            onValue(visitasRef, (snap) => {
+                tableList.innerHTML = "";
+
+                if (!snap.exists()) {
+                    tableList.innerHTML = `
+                        <tr>
+                            <td colspan='3' style='text-align:center; padding:24px; color:#94a3b8;'>
+                                No hay visitas registradas aún
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                snap.forEach(child => {
+                    const v = child.val();
+                    const row = `
+                        <tr>
+                            <td><strong>${v.ip || 'N/A'}</strong></td>
+                            <td>${v.ciudad || 'Desconocida'}</td>
+                            <td>${v.fecha || 'N/A'}</td>
+                        </tr>
+                    `;
+                    tableList.innerHTML = row + tableList.innerHTML; // Newest first
+                });
             });
+
+            // 3. Configure buttons
+            btnCopy.onclick = async () => {
+                try {
+                    await navigator.clipboard.writeText(link);
+                    btnCopy.textContent = '✓ Copiado';
+                    setTimeout(() => {
+                        btnCopy.textContent = 'Copiar Link';
+                    }, 2000);
+                } catch (err) {
+                    alert('Error al copiar. Link: ' + link);
+                }
+            };
+
+            btnDelete.onclick = async () => {
+                if (confirm("¿Estás seguro de eliminar TODAS las visitas registradas?")) {
+                    btnDelete.disabled = true;
+                    btnDelete.textContent = 'Eliminando...';
+
+                    try {
+                        await remove(visitasRef);
+                        alert('Datos eliminados correctamente');
+                    } catch (err) {
+                        alert('Error al eliminar: ' + err.message);
+                    } finally {
+                        btnDelete.disabled = false;
+                        btnDelete.textContent = 'Limpiar Datos';
+                    }
+                }
+            };
         });
+    </script>
+</body>
 
-        // 3. Configurar Botones (Sin errores de asignación)
-        btnCopy.onclick = () => {
-            navigator.clipboard.writeText(link);
-            alert("¡Link copiado!");
-        };
-
-        btnDelete.onclick = async () => {
-            if(confirm("¿Seguro que quieres borrar todo?")) {
-                await remove(visitasRef);
-            }
-        };
-    });
-</script>
+</html>

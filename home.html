@@ -1,16 +1,51 @@
-<link rel="stylesheet" href="style.css">
-<div class="card">
-    <h1>Bienvenido</h1>
-    <p id="user-info">Cargando...</p>
-    <button class="btn-blue" onclick="location.href='rastreo.html'">Ir al Rastreador</button>
-    <button class="btn-red" id="btn-out">Cerrar Sesión</button>
-</div>
-<script type="module">
-    import { auth, signOut, onAuthStateChanged } from './firebase-config.js';
-    onAuthStateChanged(auth, u => { 
-        if(!u) location.href='index.html';
-        else document.getElementById('user-info').innerText = u.email;
-    });
-    document.getElementById('btn-out').onclick = () => signOut(auth);
-</script>
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Dashboard - Active Server">
+    <meta name="theme-color" content="#4f46e5">
+    <title>Dashboard - Active Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card">
+        <h1>Bienvenido</h1>
+        <p id="user-info" class="text-center">
+            <span class="loading"></span> Cargando...
+        </p>
+        <button class="btn-blue" onclick="location.href='rastreo.html'">
+            Ir al Rastreador
+        </button>
+        <button class="btn-red" id="btn-out">
+            Cerrar Sesión
+        </button>
+    </div>
+
+    <script type="module">
+        import { auth, signOut, onAuthStateChanged } from './firebase-config.js';
+
+        const userInfo = document.getElementById('user-info');
+        const btnOut = document.getElementById('btn-out');
+
+        onAuthStateChanged(auth, u => {
+            if (!u) {
+                location.href = 'index.html';
+            } else {
+                userInfo.innerHTML = `<strong>${u.email}</strong>`;
+            }
+        });
+
+        btnOut.onclick = async () => {
+            if (confirm('¿Estás seguro de cerrar sesión?')) {
+                btnOut.disabled = true;
+                btnOut.textContent = 'Cerrando...';
+                await signOut(auth);
+            }
+        };
+    </script>
+</body>
+
+</html>

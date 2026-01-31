@@ -1,20 +1,60 @@
-<link rel="stylesheet" href="style.css">
-<div class="card" style="max-width: 350px; margin-top: 100px;">
-    <h2>Login</h2>
-    <form id="f-login">
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="pass" placeholder="Password" required>
-        <button class="btn-blue">ENTRAR</button>
-    </form>
-</div>
-<script type="module">
-    import { auth, signInWithEmailAndPassword, onAuthStateChanged } from './firebase-config.js';
-    onAuthStateChanged(auth, u => { if(u) location.href='home.html' });
-    document.getElementById('f-login').onsubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await signInWithEmailAndPassword(auth, email.value, pass.value);
-            location.href = 'home.html';
-        } catch(e) { alert("Error: " + e.code); }
-    };
-</script>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sistema de rastreo de visitas - Iniciar sesión">
+    <meta name="theme-color" content="#4f46e5">
+    <title>Login - Active Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card" style="max-width: 420px;">
+        <h2>Iniciar Sesión</h2>
+        <form id="f-login">
+            <input type="email" id="email" placeholder="Correo electrónico" required autocomplete="email">
+            <input type="password" id="pass" placeholder="Contraseña" required autocomplete="current-password">
+            <button type="submit" class="btn-blue" id="btn-login">Entrar</button>
+        </form>
+    </div>
+
+    <script type="module">
+        import { auth, signInWithEmailAndPassword, onAuthStateChanged } from './firebase-config.js';
+
+        const btnLogin = document.getElementById('btn-login');
+        const form = document.getElementById('f-login');
+
+        // Redirect if already logged in
+        onAuthStateChanged(auth, u => {
+            if (u) location.href = 'home.html';
+        });
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+
+            // Disable button during login
+            btnLogin.disabled = true;
+            btnLogin.textContent = 'Ingresando...';
+
+            try {
+                await signInWithEmailAndPassword(auth, email.value, pass.value);
+                location.href = 'home.html';
+            } catch (error) {
+                btnLogin.disabled = false;
+                btnLogin.textContent = 'Entrar';
+
+                let message = 'Error al iniciar sesión';
+                if (error.code === 'auth/invalid-email') message = 'Correo inválido';
+                else if (error.code === 'auth/user-not-found') message = 'Usuario no encontrado';
+                else if (error.code === 'auth/wrong-password') message = 'Contraseña incorrecta';
+                else if (error.code === 'auth/invalid-credential') message = 'Credenciales inválidas';
+
+                alert(message);
+            }
+        };
+    </script>
+</body>
+
+</html>
