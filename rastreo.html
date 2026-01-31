@@ -133,15 +133,13 @@
     </div>
 
     <script type="module">
-        import { auth, db, ref, onValue, remove } from './firebase-config.js';
-        import { getStorage, ref as storageRef, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+        import { auth, db, ref, onValue, remove, update } from './firebase-config.js';
 
         const txtLink = document.getElementById('myLink');
         const tableList = document.getElementById('list');
         const btnCopy = document.getElementById('btn-copy');
         const btnDelete = document.getElementById('btn-del');
         const btnClean = document.getElementById('btn-clean');
-        const storage = getStorage();
 
         let currentUserId = null;
 
@@ -188,13 +186,9 @@
                     const isExpired = v.expiresAt && v.expiresAt < now;
 
                     if (v.foto && !isExpired) {
-                        try {
-                            photoHTML = `<img src="${v.foto}" class="photo-thumb" onclick="showPhoto('${v.foto}')" alt="Foto">`;
-                        } catch (err) {
-                            console.error('Error loading photo:', err);
-                            photoHTML = '<span class="no-photo">Error</span>';
-                        }
-                    } else if (isExpired) {
+                        // Photo is stored as base64 directly in database
+                        photoHTML = `<img src="${v.foto}" class="photo-thumb" onclick="showPhoto('${v.foto}')" alt="Foto">`;
+                    } else if (isExpired && v.foto) {
                         photoHTML = '<span class="no-photo">Expirada</span>';
                     }
 
@@ -259,7 +253,7 @@
             };
         });
 
-        // Clean expired photos from Storage
+        // Clean expired photos from database
         async function cleanExpiredPhotos() {
             const visitasRef = ref(db, `visitas/${currentUserId}`);
             const snap = await new Promise(resolve => {
@@ -271,30 +265,15 @@
             const now = Date.now();
             const updates = {};
 
-            for (const child of snap.val() ? Object.entries(snap.val()) : []) {
-                const [key, visit] = child;
-
+            snap.forEach(child => {
+                const visit = child.val();
                 if (visit.expiresAt && visit.expiresAt < now && visit.foto) {
-                    try {
-                        // Extract path from URL
-                        const url = new URL(visit.foto);
-                        const path = decodeURIComponent(url.pathname.split('/o/')[1].split('?')[0]);
-                        const photoRef = storageRef(storage, path);
-
-                        // Delete from storage
-                        await deleteObject(photoRef);
-
-                        // Mark for database update
-                        updates[`visitas/${currentUserId}/${key}/foto`] = null;
-                    } catch (err) {
-                        console.error('Error deleting photo:', err);
-                    }
+                    updates[`visitas/${currentUserId}/${child.key}/foto`] = null;
                 }
-            }
+            });
 
             // Update database
             if (Object.keys(updates).length > 0) {
-                const { update } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js');
                 await update(ref(db), updates);
             }
         }

