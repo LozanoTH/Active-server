@@ -18,20 +18,53 @@
 
 <script type="module">
     import { auth, db, ref, onValue, remove } from './firebase-config.js';
-    auth.onAuthStateChanged(u => {
-        if(!u) return;
-        const link = `${location.origin}/view.html?id=${u.uid}`;
-        myLink.innerText = link;
 
-        onValue(ref(db, `visitas/${u.uid}`), snap => {
-            list.innerHTML = "";
+    // Capturamos los elementos correctamente
+    const txtLink = document.getElementById('myLink');
+    const tableList = document.getElementById('list');
+    const btnCopy = document.getElementById('btn-copy');
+    const btnDelete = document.getElementById('btn-del');
+
+    auth.onAuthStateChanged(u => {
+        if(!u) {
+            location.href = 'index.html';
+            return;
+        }
+
+        // 1. Generar Link
+        const link = `${window.location.origin}/view.html?id=${u.uid}`;
+        txtLink.innerText = link;
+
+        // 2. Escuchar Visitas
+        const visitasRef = ref(db, `visitas/${u.uid}`);
+        onValue(visitasRef, (snap) => {
+            tableList.innerHTML = "";
+            if (!snap.exists()) {
+                tableList.innerHTML = "<tr><td colspan='3' style='text-align:center'>Sin visitas</td></tr>";
+                return;
+            }
+            
             snap.forEach(child => {
                 const v = child.val();
-                list.innerHTML = `<tr><td>${v.ip}</td><td>${v.ciudad}</td><td>${v.fecha}</td></tr>` + list.innerHTML;
+                const row = `<tr>
+                    <td>${v.ip}</td>
+                    <td>${v.ciudad}</td>
+                    <td>${v.fecha}</td>
+                </tr>`;
+                tableList.innerHTML = row + tableList.innerHTML; // Lo más nuevo arriba
             });
         });
 
-        btn-del.onclick = () => confirm("¿Borrar?") && remove(ref(db, `visitas/${u.uid}`));
-        btn-copy.onclick = () => { navigator.clipboard.writeText(link); alert("Copiado"); };
+        // 3. Configurar Botones (Sin errores de asignación)
+        btnCopy.onclick = () => {
+            navigator.clipboard.writeText(link);
+            alert("¡Link copiado!");
+        };
+
+        btnDelete.onclick = async () => {
+            if(confirm("¿Seguro que quieres borrar todo?")) {
+                await remove(visitasRef);
+            }
+        };
     });
 </script>
