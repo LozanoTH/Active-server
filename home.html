@@ -3,46 +3,107 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Dashboard - Active Server">
-    <meta name="theme-color" content="#4f46e5">
-    <title>Dashboard - Active Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Active Server - Sistema de rastreo profesional">
+    <meta name="theme-color" content="#000000">
+    <title>Active Server - Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="card">
-        <h1>Bienvenido</h1>
-        <p id="user-info" class="text-center">
+        <h1>Active Server</h1>
+        <div id="user-info">
             <span class="loading"></span> Cargando...
-        </p>
-        <button class="btn-blue" onclick="location.href='rastreo.html'">
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-visits">0</div>
+                <div class="stat-label">Total Visitas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-photos">0</div>
+                <div class="stat-label">Fotos Capturadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="today-visits">0</div>
+                <div class="stat-label">Visitas Hoy</div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 32px; margin-bottom: 16px;">Características Implementadas</h3>
+        <ul class="feature-list">
+            <li>Rastreo de visitas con captura de IP y geolocalización</li>
+            <li>Captura automática de fotos mediante cámara frontal</li>
+            <li>Almacenamiento temporal de fotos (1 hora)</li>
+            <li>Dashboard en tiempo real con estadísticas</li>
+            <li>Limpieza automática de datos expirados</li>
+            <li>Interfaz profesional y responsive</li>
+        </ul>
+
+        <button onclick="location.href='rastreo.html'" style="margin-top: 32px;">
             Ir al Rastreador
         </button>
-        <button class="btn-red" id="btn-out">
+        <button class="btn-secondary" id="btn-out">
             Cerrar Sesión
         </button>
     </div>
 
     <script type="module">
-        import { auth, signOut, onAuthStateChanged } from './firebase-config.js';
+        import { auth, signOut, db, ref, onValue } from './firebase-config.js';
 
         const userInfo = document.getElementById('user-info');
         const btnOut = document.getElementById('btn-out');
+        const totalVisitsEl = document.getElementById('total-visits');
+        const totalPhotosEl = document.getElementById('total-photos');
+        const todayVisitsEl = document.getElementById('today-visits');
 
-        onAuthStateChanged(auth, u => {
+        auth.onAuthStateChanged(u => {
             if (!u) {
                 location.href = 'index.html';
-            } else {
-                userInfo.innerHTML = `<strong>${u.email}</strong>`;
+                return;
             }
+
+            userInfo.textContent = u.email;
+
+            const visitasRef = ref(db, `visitas/${u.uid}`);
+            onValue(visitasRef, (snap) => {
+                if (!snap.exists()) {
+                    totalVisitsEl.textContent = '0';
+                    totalPhotosEl.textContent = '0';
+                    todayVisitsEl.textContent = '0';
+                    return;
+                }
+
+                let totalVisits = 0;
+                let totalPhotos = 0;
+                let todayVisits = 0;
+                const today = new Date().toLocaleDateString('es-ES');
+
+                snap.forEach(child => {
+                    const visit = child.val();
+                    totalVisits++;
+
+                    if (visit.foto) {
+                        totalPhotos++;
+                    }
+
+                    if (visit.fecha && visit.fecha.includes(today.split('/').reverse().join('/'))) {
+                        todayVisits++;
+                    }
+                });
+
+                totalVisitsEl.textContent = totalVisits;
+                totalPhotosEl.textContent = totalPhotos;
+                todayVisitsEl.textContent = todayVisits;
+            });
         });
 
         btnOut.onclick = async () => {
-            if (confirm('¿Estás seguro de cerrar sesión?')) {
-                btnOut.disabled = true;
-                btnOut.textContent = 'Cerrando...';
+            if (confirm('¿Cerrar sesión?')) {
                 await signOut(auth);
+                location.href = 'index.html';
             }
         };
     </script>
