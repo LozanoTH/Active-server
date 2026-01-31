@@ -1,85 +1,37 @@
-<div class="container">
-    <a href="home.html" class="nav-back">← Volver al Menú</a>
-    
-    <div class="card">
-        <h2>Generador de Link de Rastreo</h2>
-        <div class="link-box">
-            <code id="share-link">Generando link...</code>
-        </div>
-        <br>
-        <button onclick="copyLink()">Copiar Link</button>
-        <button id="btn-delete" style="background: #dc3545; margin-left: 10px;">Borrar Historial</button>
-        <span id="copy-status" class="status"></span>
+<link rel="stylesheet" href="style.css">
+<div class="card">
+    <a href="home.html">← Volver</a>
+    <h2>Rastreador</h2>
+    <div style="background:#eee; padding:10px; border-radius:5px; margin:10px 0;">
+        <code id="myLink">Generando...</code>
     </div>
+    <button class="btn-blue" id="btn-copy">Copiar Link</button>
+    <button class="btn-red" id="btn-del">Limpiar Datos</button>
+</div>
 
-    <h3>Actividad Reciente</h3>
-    <div style="overflow-x: auto;">
-        <table>
-            <thead>
-                <tr>
-                    <th>Fecha y Hora</th>
-                    <th>IP</th>
-                    <th>Ubicación</th>
-                    <th>Dispositivo</th>
-                </tr>
-            </thead>
-            <tbody id="logs-body"></tbody>
-        </table>
-    </div>
+<div class="card">
+    <table>
+        <thead><tr><th>IP</th><th>Ciudad</th><th>Fecha</th></tr></thead>
+        <tbody id="list"></tbody>
+    </table>
 </div>
 
 <script type="module">
-    // 1. Importar 'remove' de la base de datos
-    import { auth, db, ref } from './firebase-config.js';
-    import { onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { auth, db, ref, onValue, remove } from './firebase-config.js';
+    auth.onAuthStateChanged(u => {
+        if(!u) return;
+        const link = `${location.origin}/view.html?id=${u.uid}`;
+        myLink.innerText = link;
 
-    auth.onAuthStateChanged((user) => {
-        if (!user) { window.location.href = 'index.html'; return; }
-
-        const trackingLink = `${window.location.origin}/view.html?id=${user.uid}`;
-        document.getElementById('share-link').innerText = trackingLink;
-
-        const logsRef = ref(db, 'visitas/' + user.uid);
-
-        // 2. Lógica para Borrar Registros
-        document.getElementById('btn-delete').onclick = async () => {
-            if (confirm("¿Estás seguro de que quieres limpiar todo el historial?")) {
-                try {
-                    await remove(logsRef);
-                    alert("Historial borrado correctamente.");
-                } catch (error) {
-                    alert("Error al borrar: " + error.message);
-                }
-            }
-        };
-
-        // 3. Escuchar datos (se limpia automáticamente en la pantalla al borrar en la DB)
-        onValue(logsRef, (snapshot) => {
-            const tbody = document.getElementById('logs-body');
-            tbody.innerHTML = ""; 
-
-            if (!snapshot.exists()) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay registros.</td></tr>';
-                return;
-            }
-
-            const logs = [];
-            snapshot.forEach(child => { logs.push(child.val()); });
-            logs.reverse().forEach(data => {
-                tbody.innerHTML += `<tr>
-                    <td>${data.fecha}</td>
-                    <td><strong>${data.ip}</strong></td>
-                    <td>${data.ciudad}, ${data.pais}</td>
-                    <td style="font-size:11px; color:#666;">${data.agente || 'N/A'}</td>
-                </tr>`;
+        onValue(ref(db, `visitas/${u.uid}`), snap => {
+            list.innerHTML = "";
+            snap.forEach(child => {
+                const v = child.val();
+                list.innerHTML = `<tr><td>${v.ip}</td><td>${v.ciudad}</td><td>${v.fecha}</td></tr>` + list.innerHTML;
             });
         });
-    });
 
-    window.copyLink = () => {
-        const text = document.getElementById('share-link').innerText;
-        navigator.clipboard.writeText(text);
-        alert("Link copiado");
-    };
+        btn-del.onclick = () => confirm("¿Borrar?") && remove(ref(db, `visitas/${u.uid}`));
+        btn-copy.onclick = () => { navigator.clipboard.writeText(link); alert("Copiado"); };
+    });
 </script>
-<link rel="stylesheet" href="style.css">

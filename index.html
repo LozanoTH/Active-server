@@ -1,52 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Firebase</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
-        form { display: flex; flex-direction: column; gap: 10px; width: 300px; }
-        input, button { padding: 10px; }
-    </style>
-</head>
-<body>
-
-    <form id="login-form">
-        <h2>Iniciar Sesión</h2>
+<link rel="stylesheet" href="style.css">
+<div class="card" style="max-width: 350px; margin-top: 100px;">
+    <h2>Login</h2>
+    <form id="f-login">
         <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Contraseña" required>
-        <button type="submit" id="btn-login">Entrar</button>
+        <input type="password" id="pass" placeholder="Password" required>
+        <button class="btn-blue">ENTRAR</button>
     </form>
-
-    <script type="module">
-        import { auth, signInWithEmailAndPassword } from './firebase-config.js';
-        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-        const loginForm = document.getElementById('login-form');
-
-        // 1. Redirigir al Home si ya hay una sesión activa
-        onAuthStateChanged(auth, (user) => {
-            if (user) window.location.href = 'home.html';
-        });
-
-        // 2. Lógica de Login
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const btn = document.getElementById('btn-login');
-
-            try {
-                btn.disabled = true;
-                btn.innerText = "Cargando...";
-                await signInWithEmailAndPassword(auth, email, password);
-                window.location.href = "home.html";
-            } catch (error) {
-                btn.disabled = false;
-                btn.innerText = "Entrar";
-                alert("Error: " + error.code);
-            }
-        });
-    </script>
-</body>
-</html>
+</div>
+<script type="module">
+    import { auth, signInWithEmailAndPassword, onAuthStateChanged } from './firebase-config.js';
+    onAuthStateChanged(auth, u => { if(u) location.href='home.html' });
+    document.getElementById('f-login').onsubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await signInWithEmailAndPassword(auth, email.value, pass.value);
+            location.href = 'home.html';
+        } catch(e) { alert("Error: " + e.code); }
+    };
+</script>

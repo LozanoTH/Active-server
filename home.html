@@ -1,42 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Panel de Usuario</title>
-</head>
-<nav>
-    <a href="home.html">Inicio</a> | 
-    <a href="rastreo.html">Rastreador de Accesos</a>
-</nav>
-<body>
-    <div id="app" style="display:none;">
-        <h1>Bienvenido, <span id="user-email"></span></h1>
-        <button id="logout-btn">Cerrar Sesión</button>
-    </div>
-
-    <script type="module">
-        import { auth } from './firebase-config.js';
-        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-        const appDiv = document.getElementById('app');
-        const emailSpan = document.getElementById('user-email');
-        const logoutBtn = document.getElementById('logout-btn');
-
-        // Monitor de estado: Si no hay usuario, redirige al login
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                appDiv.style.display = 'block';
-                emailSpan.textContent = user.email;
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
-
-        // Función para salir
-        logoutBtn.addEventListener('click', async () => {
-            await signOut(auth);
-            alert("Sesión cerrada");
-        });
-    </script>
-</body>
 <link rel="stylesheet" href="style.css">
-</html>
+<div class="card">
+    <h1>Bienvenido</h1>
+    <p id="user-info">Cargando...</p>
+    <button class="btn-blue" onclick="location.href='rastreo.html'">Ir al Rastreador</button>
+    <button class="btn-red" id="btn-out">Cerrar Sesión</button>
+</div>
+<script type="module">
+    import { auth, signOut, onAuthStateChanged } from './firebase-config.js';
+    onAuthStateChanged(auth, u => { 
+        if(!u) location.href='index.html';
+        else document.getElementById('user-info').innerText = u.email;
+    });
+    document.getElementById('btn-out').onclick = () => signOut(auth);
+</script>
+<link rel="stylesheet" href="style.css">
