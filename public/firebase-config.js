@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getDatabase, ref, push, onValue, remove, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getDatabase, ref, push, onValue, remove, update, set, onDisconnect } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDp6IB_ZndLgMWamLzThb5EBqClYSQf2LM",
@@ -16,4 +16,4 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getDatabase(app);
 export const googleProvider = new GoogleAuthProvider();
-export { signInWithEmailAndPassword, signOut, onAuthStateChanged, ref, push, onValue, remove, update, signInWithPopup };
+export { signInWithEmailAndPassword, signOut, onAuthStateChanged, ref, push, onValue, remove, update, set, onDisconnect, signInWithPopup };

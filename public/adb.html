@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ADB WebUSB - Nexhax">
+    <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="light dark">
+    <title>ADB - Nexhax</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "@yume-chan/adb": "https://esm.sh/@yume-chan/adb",
+                "@yume-chan/adb-daemon-webusb": "https://esm.sh/@yume-chan/adb-daemon-webusb",
+                "@yume-chan/adb-credential-web": "https://esm.sh/@yume-chan/adb-credential-web"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">Nexhax</div>
+        <nav class="nav-links">
+            <a href="home.html">Dashboard</a>
+            <a href="rastreo.html">Rastreo</a>
+            <a href="keylogs.html">Keylogs</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="adb.html" class="active">ADB</a>
+        </nav>
+        <a href="home.html" class="btn-ghost btn-inline">Volver</a>
+    </header>
+
+    <div class="card">
+        <h2>ADB por WebUSB</h2>
+        <p>Conecta tu dispositivo Android por USB, activa Depuracion USB y acepta la huella RSA cuando aparezca.</p>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Estado</div>
+                <div class="info-value" id="adb-status">Desconectado</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Dispositivo</div>
+                <div class="info-value" id="adb-device">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">WebUSB</div>
+                <div class="info-value" id="adb-webusb">Comprobando...</div>
+            </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
+            <button id="btn-adb-detect" class="btn-secondary btn-inline">Detectar</button>
+            <button id="btn-adb-select" class="btn-inline">Seleccionar dispositivo</button>
+            <button id="btn-adb-connect" class="btn-inline">Conectar</button>
+            <button id="btn-adb-info" class="btn-secondary btn-inline">Obtener Info</button>
+            <button id="btn-adb-disconnect" class="btn-ghost btn-inline">Desconectar</button>
+        </div>
+
+        <div class="device-list" id="adb-devices">
+            <div class="device-item muted">Sin dispositivos detectados aun.</div>
+        </div>
+
+        <div class="code-output" id="adb-output">Sin datos aun.</div>
+    </div>
+
+    <script type="module" src="./adb.js"></script>
+</body>
+
+</html>
