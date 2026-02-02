@@ -6,18 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Active Server - Sistema de rastreo profesional">
     <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="light dark">
     <title>Nexhax - Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <header class="topbar">
+        <div class="brand">Nexhax</div>
+        <nav class="nav-links">
+            <a href="home.html" class="active">Dashboard</a>
+            <a href="rastreo.html">Rastreo</a>
+            <a href="keylogs.html">Keylogs</a>
+            <a href="perfil.html">Perfil</a>
+        </nav>
+        <button class="btn-ghost btn-inline" id="btn-out">Cerrar sesion</button>
+    </header>
     <div class="card">
         <h1>Exhax</h1>
         <div id="user-info">
             <span class="loading"></span> Cargando...
         </div>
 
-        <div class="stats-grid">
+        <div class="stats-grid stagger">
             <div class="stat-card">
                 <div class="stat-number" id="total-visits">0</div>
                 <div class="stat-label">Total Visitas</div>
@@ -33,7 +44,7 @@
         </div>
 
         <h3 style="margin-top: 32px; margin-bottom: 16px;">Características Implementadas</h3>
-        <ul class="feature-list">
+        <ul class="feature-list stagger">
             <li>Rastreo de visitas con captura de IP y geolocalización</li>
             <li>Captura automática de fotos mediante cámara frontal</li>
             <li>Almacenamiento temporal de fotos (1 hora)</li>
@@ -42,15 +53,6 @@
             <li>Interfaz profesional y responsive</li>
         </ul>
 
-        <button onclick="location.href='rastreo.html'" style="margin-top: 32px;">
-            Ir al Rastreador
-        </button>
-        <button onclick="location.href='keylogs.html'" class="btn-secondary" style="margin-top: 10px;">
-            Ver Keylogs
-        </button>
-        <button class="btn-secondary" id="btn-out">
-            Cerrar Sesión
-        </button>
     </div>
 
     <script type="module">
