@@ -195,8 +195,7 @@ btnConnect.addEventListener("click", async () => {
         setStatus("Conectado");
         setDevice(selectedDevice.serial || "Android");
         showToast("Dispositivo conectado.", "success");
-        panelEl.innerHTML = `<div class="panel-title">Conexion activa</div>
-            <p>Ya puedes usar las herramientas. Selecciona una pestaña arriba.</p>`;
+        await showFullDeviceInfo();
     } catch (err) {
         if (err instanceof AdbDaemonWebUsbDevice.DeviceBusyError) {
             showToast("El dispositivo esta ocupado por ADB de escritorio.", "error");
@@ -216,19 +215,7 @@ btnInfo.addEventListener("click", async () => {
         return;
     }
 
-    try {
-        const model = await adb.getProp("ro.product.model");
-        const version = await adb.getProp("ro.build.version.release");
-        const brand = await adb.getProp("ro.product.brand");
-        setOutput(`Marca: ${brand}\nModelo: ${model}\nAndroid: ${version}`);
-        showToast("Informacion obtenida.", "success");
-        panelEl.innerHTML = `<div class="panel-title">Device Info</div>
-            <p>Marca: <strong>${brand}</strong></p>
-            <p>Modelo: <strong>${model}</strong></p>
-            <p>Android: <strong>${version}</strong></p>`;
-    } catch (err) {
-        showToast(`Error al leer info: ${err.message || err}`, "error");
-    }
+    await showFullDeviceInfo();
 });
 
 btnDisconnect.addEventListener("click", async () => {
@@ -263,6 +250,85 @@ function createCredentialStore() {
         return new AdbCredentialWeb.AdbWebCredentialStore();
     }
     throw new Error("No se encontró un gestor de credenciales compatible.");
+}
+
+async function showFullDeviceInfo() {
+    try {
+        const [
+            model,
+            brand,
+            device,
+            manufacturer,
+            product,
+            version,
+            sdk,
+            buildId,
+            buildType,
+            buildTags,
+            cpuAbi,
+            hardware,
+            serial,
+            board,
+            bootloader,
+            displayId
+        ] = await Promise.all([
+            adb.getProp("ro.product.model"),
+            adb.getProp("ro.product.brand"),
+            adb.getProp("ro.product.device"),
+            adb.getProp("ro.product.manufacturer"),
+            adb.getProp("ro.product.name"),
+            adb.getProp("ro.build.version.release"),
+            adb.getProp("ro.build.version.sdk"),
+            adb.getProp("ro.build.id"),
+            adb.getProp("ro.build.type"),
+            adb.getProp("ro.build.tags"),
+            adb.getProp("ro.product.cpu.abi"),
+            adb.getProp("ro.hardware"),
+            adb.getProp("ro.serialno"),
+            adb.getProp("ro.product.board"),
+            adb.getProp("ro.bootloader"),
+            adb.getProp("ro.build.display.id")
+        ]);
+
+        const infoText = [
+            `Marca: ${brand}`,
+            `Fabricante: ${manufacturer}`,
+            `Modelo: ${model}`,
+            `Dispositivo: ${device}`,
+            `Producto: ${product}`,
+            `Android: ${version} (SDK ${sdk})`,
+            `Build ID: ${buildId}`,
+            `Build Type: ${buildType}`,
+            `Build Tags: ${buildTags}`,
+            `CPU ABI: ${cpuAbi}`,
+            `Hardware: ${hardware}`,
+            `Board: ${board}`,
+            `Bootloader: ${bootloader}`,
+            `Display ID: ${displayId}`,
+            `Serial: ${serial}`
+        ].join("\n");
+
+        setOutput(infoText);
+        showToast("Informacion del dispositivo cargada.", "success");
+        panelEl.innerHTML = `<div class="panel-title">Device Info</div>
+            <p>Marca: <strong>${brand}</strong></p>
+            <p>Fabricante: <strong>${manufacturer}</strong></p>
+            <p>Modelo: <strong>${model}</strong></p>
+            <p>Dispositivo: <strong>${device}</strong></p>
+            <p>Producto: <strong>${product}</strong></p>
+            <p>Android: <strong>${version}</strong> (SDK ${sdk})</p>
+            <p>Build ID: <strong>${buildId}</strong></p>
+            <p>Build Type: <strong>${buildType}</strong></p>
+            <p>Build Tags: <strong>${buildTags}</strong></p>
+            <p>CPU ABI: <strong>${cpuAbi}</strong></p>
+            <p>Hardware: <strong>${hardware}</strong></p>
+            <p>Board: <strong>${board}</strong></p>
+            <p>Bootloader: <strong>${bootloader}</strong></p>
+            <p>Display ID: <strong>${displayId}</strong></p>
+            <p>Serial: <strong>${serial}</strong></p>`;
+    } catch (err) {
+        showToast(`Error al leer info: ${err.message || err}`, "error");
+    }
 }
 
 tabs.forEach((tab) => {
