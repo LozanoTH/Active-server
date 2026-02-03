@@ -33,38 +33,76 @@
         <a href="home.html" class="btn-ghost btn-inline">Volver</a>
     </header>
 
-    <div class="card">
-        <h2>ADB por WebUSB</h2>
-        <p>Conecta tu dispositivo Android por USB, activa Depuracion USB y acepta la huella RSA cuando aparezca.</p>
+    <div class="adb-layout">
+        <aside class="adb-sidebar">
+            <div class="adb-brand">WebADB</div>
+            <div class="adb-section-title">Dispositivos</div>
 
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-label">Estado</div>
-                <div class="info-value" id="adb-status">Desconectado</div>
+            <div class="device-list" id="adb-devices">
+                <div class="device-item muted">Sin dispositivos detectados aun.</div>
             </div>
-            <div class="info-item">
-                <div class="info-label">Dispositivo</div>
-                <div class="info-value" id="adb-device">-</div>
+
+            <div class="adb-actions">
+                <button id="btn-adb-detect" class="btn-secondary btn-inline">Detectar</button>
+                <button id="btn-adb-select" class="btn-inline">Seleccionar</button>
+                <button id="btn-adb-connect" class="btn-inline">Conectar</button>
+                <button id="btn-adb-disconnect" class="btn-ghost btn-inline">Desconectar</button>
             </div>
-            <div class="info-item">
-                <div class="info-label">WebUSB</div>
-                <div class="info-value" id="adb-webusb">Comprobando...</div>
+
+            <div class="adb-status-panel">
+                <div class="status-row">
+                    <span>Estado</span>
+                    <strong id="adb-status">Desconectado</strong>
+                </div>
+                <div class="status-row">
+                    <span>Dispositivo</span>
+                    <strong id="adb-device">-</strong>
+                </div>
+                <div class="status-row">
+                    <span>WebUSB</span>
+                    <strong id="adb-webusb">Comprobando...</strong>
+                </div>
             </div>
-        </div>
 
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px;">
-            <button id="btn-adb-detect" class="btn-secondary btn-inline">Detectar</button>
-            <button id="btn-adb-select" class="btn-inline">Seleccionar dispositivo</button>
-            <button id="btn-adb-connect" class="btn-inline">Conectar</button>
-            <button id="btn-adb-info" class="btn-secondary btn-inline">Obtener Info</button>
-            <button id="btn-adb-disconnect" class="btn-ghost btn-inline">Desconectar</button>
-        </div>
+            <div class="adb-help">
+                <div class="adb-section-title">Compatibilidad</div>
+                <p>Solo navegadores Chromium con WebUSB. Usa HTTPS o localhost.</p>
+                <div class="steps">
+                    <div class="step">1. Activa Depuracion USB</div>
+                    <div class="step">2. Conecta el cable</div>
+                    <div class="step">3. Acepta huella RSA</div>
+                </div>
+            </div>
+        </aside>
 
-        <div class="device-list" id="adb-devices">
-            <div class="device-item muted">Sin dispositivos detectados aun.</div>
-        </div>
+        <main class="adb-main">
+            <div class="card adb-hero">
+                <h2>ADB por WebUSB</h2>
+                <p>Conecta tu Android y controla funciones clave desde el navegador.</p>
+                <div class="adb-toolbar">
+                    <button id="btn-adb-info" class="btn-secondary btn-inline">Obtener Info</button>
+                    <button class="btn-ghost btn-inline" id="btn-adb-refresh">Actualizar lista</button>
+                </div>
+                <div class="code-output" id="adb-output">Sin datos aun.</div>
+            </div>
 
-        <div class="code-output" id="adb-output">Sin datos aun.</div>
+            <div class="card">
+                <div class="adb-tabs">
+                    <button class="tab active" data-tab="info">Device Info</button>
+                    <button class="tab" data-tab="files">File Manager</button>
+                    <button class="tab" data-tab="screen">Screen Capture</button>
+                    <button class="tab" data-tab="shell">Interactive Shell</button>
+                    <button class="tab" data-tab="wifi">ADB over WiFi</button>
+                    <button class="tab" data-tab="apk">Install APK</button>
+                    <button class="tab" data-tab="logcat">Logcat</button>
+                </div>
+
+                <div class="adb-panel" id="adb-panel">
+                    <div class="panel-title">Device Info</div>
+                    <p>Selecciona un dispositivo y presiona "Obtener Info" para ver los datos basicos.</p>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script type="module" src="./adb.js"></script>
