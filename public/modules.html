@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestor de módulos - Nexhax">
+    <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="light dark">
+    <title>Gestor de Módulos</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">Gestor de Módulos</div>
+        <div class="brand-sub">Crea y administra entradas en `public/modules.json`.</div>
+    </header>
+
+    <div class="card module-hero">
+        <h2>Agregar módulos</h2>
+        <p>Esta pantalla se enfoca solo en añadir módulos y mantener el listado actualizado.</p>
+        <div class="module-toolbar">
+            <button class="btn-secondary btn-inline" id="btn-refresh">Actualizar</button>
+            <button class="btn-ghost btn-inline" id="btn-export">Exportar JSON</button>
+        </div>
+        <div class="module-count" id="module-count">0 módulos</div>
+    </div>
+
+    <div class="card">
+        <h3>Agregar módulo</h3>
+        <form id="module-form" class="module-form">
+            <div class="module-split">
+                <div class="field">
+                    <label class="field-label" for="module-name">Nombre</label>
+                    <input id="module-name" type="text" placeholder="Nombre del módulo" required />
+                </div>
+                <div class="field">
+                    <label class="field-label" for="module-zip">URL del ZIP</label>
+                    <input id="module-zip" type="url" placeholder="https://..." required />
+                </div>
+            </div>
+            <div class="field">
+                <label class="field-label" for="module-desc">Descripción</label>
+                <textarea id="module-desc" rows="3" placeholder="Resumen del módulo"></textarea>
+            </div>
+            <div class="module-toolbar">
+                <button type="submit" class="btn-inline" id="btn-add">Agregar</button>
+                <button type="button" class="btn-ghost btn-inline" id="btn-clear-form">Limpiar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Listado actual</h3>
+        <div id="module-list" class="module-list">
+            <div class="module-empty">
+                <span class="loading"></span> Cargando módulos...
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./modules.js"></script>
+</body>
+
+</html>

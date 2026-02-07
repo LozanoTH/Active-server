@@ -1,7 +1,102 @@
 [
   {
-    "name": "modulo señuelo",
-    "description": "prueba de consepto",
-    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/wallpeper.zip"
+    "name": "Optimizador de memoria ZRAM+",
+    "description": "Mejora la gestión de memoria y reduce cierres forzados",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/zram_plus.zip"
+  },
+  {
+    "name": "ADB Performance Booster",
+    "description": "Ajustes experimentales de rendimiento vía ADB",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/adb_booster.zip"
+  },
+  {
+    "name": "System UI Tweaks Pro",
+    "description": "Personalización avanzada de la interfaz del sistema",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/systemui_tweaks.zip"
+  },
+  {
+    "name": "Thermal Engine Override",
+    "description": "Control térmico alternativo para sesiones largas",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/thermal_override.zip"
+  },
+  {
+    "name": "AudioFX Enhancer",
+    "description": "Mejora la calidad de audio del sistema",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/audiofx_enhancer.zip"
+  },
+  {
+    "name": "FPS Stabilizer",
+    "description": "Estabiliza la tasa de cuadros en juegos",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/fps_stabilizer.zip"
+  },
+  {
+    "name": "Background App Killer",
+    "description": "Cierre inteligente de apps en segundo plano",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/bg_killer.zip"
+  },
+  {
+    "name": "Network Stack Optimizer",
+    "description": "Optimización del stack TCP/IP del sistema",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/network_optimizer.zip"
+  },
+  {
+    "name": "Battery Saver Extreme",
+    "description": "Extiende la duración de batería en reposo",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/battery_extreme.zip"
+  },
+  {
+    "name": "Doze Plus",
+    "description": "Mejoras avanzadas al modo Doze de Android",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/doze_plus.zip"
+  },
+  {
+    "name": "GPU Render Boost",
+    "description": "Ajustes de renderizado para la GPU",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/gpu_boost.zip"
+  },
+  {
+    "name": "Scheduler Optimizer",
+    "description": "Optimización del scheduler del kernel",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/scheduler_opt.zip"
+  },
+  {
+    "name": "Fast Boot Controller",
+    "description": "Reduce el tiempo de arranque del sistema",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/fast_boot.zip"
+  },
+  {
+    "name": "I/O Speed Improver",
+    "description": "Mejora el rendimiento de lectura y escritura",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/io_speed.zip"
+  },
+  {
+    "name": "Touch Response Tuner",
+    "description": "Ajusta la latencia de la pantalla táctil",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/touch_tuner.zip"
+  },
+  {
+    "name": "Idle Drain Fix",
+    "description": "Reduce el consumo de batería en reposo",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/idle_drain_fix.zip"
+  },
+  {
+    "name": "Animation Speed Controller",
+    "description": "Control fino de las animaciones del sistema",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/animation_speed.zip"
+  },
+  {
+    "name": "Security Patch Backport",
+    "description": "Parche de seguridad experimental",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/security_patch.zip"
+  },
+  {
+    "name": "Process Priority Manager",
+    "description": "Gestión avanzada de prioridades de procesos",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/process_priority.zip"
+  },
+  {
+    "name": "Wallpaper Engine Lite",
+    "description": "Motor ligero para fondos dinámicos",
+    "zip_url": "https://lozanoth.github.io/modulos-adb-manager/wallpaper_lite.zip"
   }
 ]
